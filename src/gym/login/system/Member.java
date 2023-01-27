@@ -10,5 +10,19 @@ package gym.login.system;
  * @author Rahaf
  */
 public class Member {
-    
+
+    int MemberID;
+
+    public Member(int MemberID) {
+        this.MemberID = MemberID;
+    }
+
+    public int getMemberID() {
+        return MemberID;
+    }
+
+    public void setMemberID(int MemberID) {
+        this.MemberID = MemberID;
+    }
+
 }
