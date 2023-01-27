@@ -18,9 +18,12 @@ public class Gym_Login_System {
      
         Scanner input = new Scanner(System.in);
         
-
+        System.out.print("Pleas enter your MemberID: ");
+        int MemberID=input.nextInt();
+        System.out.println();
+        
         System.out.println("----------------------------------------------------------------------------------------------");
-        System.out.println("Hello this program is for -GYM LOGIN SYSTEM-");
+        System.out.println("              Hello this program is for -GYM LOGIN SYSTEM-                                    ");
         System.out.println("----------------------------------------------------------------------------------------------");
         System.out.println("               please enter the number of choices that you want *-*                           \n");
         System.out.println(" 1: Reserve an appointment ");
@@ -35,7 +38,7 @@ public class Gym_Login_System {
         
         
         if (choice == 1) {
-            ReserveAppointment();
+            ReserveAppointment(input);
 
         } else if (choice == 2) {
             ScanChipOfMember();
@@ -54,7 +57,61 @@ public class Gym_Login_System {
 }
     
     //----------------Methods----------------------
-    public static void ReserveAppointment() {
+    public static void ReserveAppointment(Scanner input) {
+        
+        //Initialize array Here
+        
+        //Morning Time (AM) 
+        
+        
+        //Evening Time (PM) 
+        
+    
+       
+        
+        
+        //---------------------------------------------------------------------
+        System.out.println();
+        System.out.println();
+        System.out.println(" -------------------------------------------------------------------- ");
+        System.out.println("             Welcome, This is the Timetable for the gym:               ");
+        System.out.println(" ______________________________________________________________________");
+        System.out.println("                            Morning Time (AM)                          ");
+        System.out.println(" _______________________________________________________________________");
+        System.out.println(" Appointment Number      Branch        Day       Date        Time      ");
+        System.out.println("________________________________________________________________________");
+        System.out.println("          1:             AL-SAFA      Sunday   01-1-2023   07:00-09:00  ");
+        System.out.println("          2:             AL-REHAB     Monday   02-1-2023   08:00-09:00  ");
+        System.out.println("          3:             AL-BAWADI    Sunday   01-1-2023   07:00-09:00  ");
+        System.out.println("          4:             AL-SAFA      Sunday   01-1-2023   09:00-11:00  ");
+        System.out.println("________________________________________________________________________");
+        System.out.println("                            Evening Time (PM)                          ");
+        System.out.println(" _______________________________________________________________________");
+        System.out.println(" Appointment Number      Branch        Day       Date        Time      ");
+        System.out.println("________________________________________________________________________");
+        System.out.println("          5:             AL-SAFA      Sunday   01-1-2023   12:00-02:00  ");
+        System.out.println("          6:             AL-REHAB     Monday   02-1-2023   08:00-10:00  ");
+        System.out.println("          7:             AL-BAWADI    Sunday   01-1-2023   07:00-09:00  ");
+        System.out.println("          8:             AL-SAFA      Sunday   01-1-2023   10:00-11:00  ");
+        System.out.println("________________________________________________________________________");
+        System.out.println();
+        System.out.print("  Enter The appointment Number: ");
+        int AP_Number=input.nextInt();
+        
+        switch(AP_Number){
+            
+            case 1: break;
+            case 2: break;
+            case 3: break;
+            case 4: break;
+            case 5: break;
+            case 6: break;
+            case 7: break;
+            case 8: break;
+
+                
+        }
+                
 
     }
     //********************************************
