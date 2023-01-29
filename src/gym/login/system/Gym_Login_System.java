@@ -61,50 +61,38 @@ public class Gym_Login_System {
         
         //Initialize array Here
         
-        //Morning Time (AM) 
-        
+   //Morning Time (AM)
         Member[] Appointment1 = new Member[4];
         for (int i = 0; i < Appointment1.length; i++) {
             Appointment1[i] = new Member();
-        }
-        for (int i = 0; i < Appointment1.length; i++) {
-            Appointment1[i].setMemberID(input.nextInt());
+            Appointment1[i].setMemberID(i + 100);
         }
 
         Member[] Appointment2 = new Member[4];
         for (int i = 0; i < Appointment2.length; i++) {
             Appointment2[i] = new Member();
-        }
-        for (int i = 0; i < Appointment2.length; i++) {
-            Appointment2[i].setMemberID(input.nextInt());
+            Appointment1[i].setMemberID(i + 200);
         }
 
         Member[] Appointment3 = new Member[4];
         Member[] Appointment4 = new Member[4];
 
-           //Evening Time (PM) 
-         
+        //Evening Time (PM)
         Member[] Appointment5 = new Member[4];
         for (int i = 0; i < Appointment5.length; i++) {
             Appointment5[i] = new Member();
-        }
-        for (int i = 0; i < Appointment5.length; i++) {
-            Appointment5[i].setMemberID(input.nextInt());
+            Appointment5[i].setMemberID(i + 300);
         }
 
         Member[] Appointment6 = new Member[4];
         for (int i = 0; i < Appointment6.length; i++) {
             Appointment6[i] = new Member();
-        }
-        for (int i = 0; i < Appointment6.length; i++) {
-            Appointment6[i].setMemberID(input.nextInt());
+            Appointment5[i].setMemberID(i + 400);
         }
 
         Member[] Appointment7 = new Member[4];
         Member[] Appointment8 = new Member[4];
 
-      
-    
        
         
         
