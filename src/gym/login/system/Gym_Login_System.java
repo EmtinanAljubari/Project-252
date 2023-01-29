@@ -104,11 +104,7 @@ public class Gym_Login_System {
                 case 1:
 
                     //Check Time Avalibality
-                    for (int i = 0; i < Appointment1.length; i++) {
-                        if (Appointment1[i] == null) {
-                            full = false;
-                        }
-                    }
+                   full = CheckTimeAvalibalty(Appointment1,full);
                     if (full) {
                         System.out.println("Sorry, this time is unavalibale! Please select another time");
 
@@ -139,11 +135,7 @@ public class Gym_Login_System {
                 case 2:
 
                     //Check Time Avalibality
-                    for (int i = 0; i < Appointment2.length; i++) {
-                        if (Appointment2[i] == null) {
-                            full = false;
-                        }
-                    }
+                    full = CheckTimeAvalibalty(Appointment2,full);
                     if (full) {
                         System.out.println("Sorry, this time is unavalibale! Please select another time");
 
@@ -173,11 +165,7 @@ public class Gym_Login_System {
                 case 3:
 
                     //Check Time Avalibality
-                    for (int i = 0; i < Appointment3.length; i++) {
-                        if (Appointment3[i] == null) {
-                            full = false;
-                        }
-                    }
+                    full = CheckTimeAvalibalty(Appointment3,full);
                     if (full) {
                         System.out.println("Sorry, this time is unavalibale! Please select another time");
 
@@ -208,11 +196,7 @@ public class Gym_Login_System {
                 case 4:
 
                     //Check Time Avalibality
-                    for (int i = 0; i < Appointment4.length; i++) {
-                        if (Appointment4[i] == null) {
-                            full = false;
-                        }
-                    }
+                    full = CheckTimeAvalibalty(Appointment4,full);
                     if (full) {
                         System.out.println("Sorry, this time is unavalibale! Please select another time");
 
@@ -242,11 +226,7 @@ public class Gym_Login_System {
                 case 5:
 
                     //Check Time Avalibality
-                    for (int i = 0; i < Appointment5.length; i++) {
-                        if (Appointment5[i] == null) {
-                            full = false;
-                        }
-                    }
+                    full = CheckTimeAvalibalty(Appointment5,full);
                     if (full) {
                         System.out.println("Sorry, this time is unavalibale! Please select another time");
 
@@ -276,11 +256,7 @@ public class Gym_Login_System {
                 case 6:
 
                     //Check Time Avalibality
-                    for (int i = 0; i < Appointment6.length; i++) {
-                        if (Appointment6[i] == null) {
-                            full = false;
-                        }
-                    }
+                    full = CheckTimeAvalibalty(Appointment6,full);
                     if (full) {
                         System.out.println("Sorry, this time is unavalibale! Please select another time");
 
@@ -310,11 +286,7 @@ public class Gym_Login_System {
                 case 7:
 
                     //Check Time Avalibality
-                    for (int i = 0; i < Appointment7.length; i++) {
-                        if (Appointment7[i] == null) {
-                            full = false;
-                        }
-                    }
+                    full = CheckTimeAvalibalty(Appointment7,full);
                     if (full) {
                         System.out.println("Sorry, this time is unavalibale! Please select another time");
 
@@ -344,11 +316,7 @@ public class Gym_Login_System {
                 case 8:
 
                     //Check Time Avalibality
-                    for (int i = 0; i < Appointment8.length; i++) {
-                        if (Appointment8[i] == null) {
-                            full = false;
-                        }
-                    }
+                    full = CheckTimeAvalibalty(Appointment8,full);
                     if (full) {
                         System.out.println("Sorry, this time is unavalibale! Please select another time");
 
@@ -424,4 +392,14 @@ public class Gym_Login_System {
 
     }
 
+    
+    public static boolean CheckTimeAvalibalty(Member x[], boolean full) {
+
+        for (int i = 0; i < x.length; i++) {
+            if (x[i] == null) {
+                full = false;
+            }
+        }
+        return full;
+    }
 }
