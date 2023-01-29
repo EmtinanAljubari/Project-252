@@ -8,20 +8,21 @@ package gym.login.system;
  *
  * @author hindx
  */
-
 import java.util.*;
 
 public class Gym_Login_System {
 
-    
+    static ArrayList<Appoinment> appointments = new ArrayList<Appoinment>();
+    static int codeIndex = 0;
+
     public static void main(String[] args) {
-     
+
         Scanner input = new Scanner(System.in);
-        
+
         System.out.print("Pleas enter your MemberID: ");
-        int MemberID=input.nextInt();
+        int MemberID = input.nextInt();
         System.out.println();
-        
+
         System.out.println("----------------------------------------------------------------------------------------------");
         System.out.println("              Hello this program is for -GYM LOGIN SYSTEM-                                    ");
         System.out.println("----------------------------------------------------------------------------------------------");
@@ -33,12 +34,10 @@ public class Gym_Login_System {
         System.out.println(" 5: End program");
         System.out.print("Pleas enter your choice Here:");
         int choice = input.nextInt();
-        
+
         //--------------------------------
-        
-        
         if (choice == 1) {
-            ReserveAppointment(input);
+            ReserveAppointment(input, MemberID);
 
         } else if (choice == 2) {
             ScanChipOfMember();
@@ -52,16 +51,15 @@ public class Gym_Login_System {
         } else {
             System.exit(0);
         }
-      
+
         //End of the main 
-}
-    
+    }
+
     //----------------Methods----------------------
-    public static void ReserveAppointment(Scanner input) {
-        
+    public static void ReserveAppointment(Scanner input, int MemberID) {
+
         //Initialize array Here
-        
-   //Morning Time (AM)
+        //Morning Time (AM)
         Member[] Appointment1 = new Member[4];
         for (int i = 0; i < Appointment1.length; i++) {
             Appointment1[i] = new Member();
@@ -92,19 +90,20 @@ public class Gym_Login_System {
 
         Member[] Appointment7 = new Member[4];
         Member[] Appointment8 = new Member[4];
-       
-        
-        
+
         //---------------------------------------------------------------------
-    
         boolean full = true;
         do {
             DisplayTimetable();
             int AP_Number = input.nextInt();
+
+            int[] code = {1046, 1174, 5252, 7896, 1294, 6076, 4343, 8854, 1020, 8550};
+
             switch (AP_Number) {
 
                 case 1:
 
+                    //Check Time Avalibality
                     for (int i = 0; i < Appointment1.length; i++) {
                         if (Appointment1[i] == null) {
                             full = false;
@@ -115,10 +114,31 @@ public class Gym_Login_System {
 
                     } else {
                         System.out.println("Great, this time is avalibale");
+
+                        int enteredCode;
+                        do {
+                            System.out.print("Please Enter the verification code: ");
+                            enteredCode = input.nextInt();
+
+                            //Check Verification Code
+                            if (code[codeIndex] == enteredCode) {
+                                Appoinment appointment = new Appoinment(MemberID, 1);
+                                appointments.add(appointment);
+                                System.out.println("Appointment has been successfully booked. Have a nice day! ");
+                                codeIndex++;
+                                System.exit(0);
+                            } else {
+                                System.out.println("Incorrect code try again!");
+                            }
+
+                        } while (code[codeIndex] != enteredCode);
+
                     }
 
                     break;
                 case 2:
+
+                    //Check Time Avalibality
                     for (int i = 0; i < Appointment2.length; i++) {
                         if (Appointment2[i] == null) {
                             full = false;
@@ -129,9 +149,30 @@ public class Gym_Login_System {
 
                     } else {
                         System.out.println("Great, this time is avalibale");
+
+                        int enteredCode;
+                        do {
+                            System.out.print("Please Enter the verification code: ");
+                            enteredCode = input.nextInt();
+
+                            //Check Verification Code
+                            if (code[codeIndex] == enteredCode) {
+                                Appoinment appointment = new Appoinment(MemberID, 2);
+                                appointments.add(appointment);
+                                System.out.println("Appointment has been successfully booked. Have a nice day! ");
+                                codeIndex++;
+                                System.exit(0);
+                            } else {
+                                System.out.println("Incorrect code try again!");
+                            }
+
+                        } while (code[codeIndex] != enteredCode);
+
                     }
                     break;
                 case 3:
+
+                    //Check Time Avalibality
                     for (int i = 0; i < Appointment3.length; i++) {
                         if (Appointment3[i] == null) {
                             full = false;
@@ -142,9 +183,31 @@ public class Gym_Login_System {
 
                     } else {
                         System.out.println("Great, this time is avalibale");
+
+                        int enteredCode;
+                        do {
+                            System.out.print("Please Enter the verification code: ");
+                            enteredCode = input.nextInt();
+
+                            //Check Verification Code
+                            if (code[codeIndex] == enteredCode) {
+                                Appoinment appointment = new Appoinment(MemberID, 3);
+                                appointments.add(appointment);
+                                System.out.println("Appointment has been successfully booked. Have a nice day! ");
+                                codeIndex++;
+                                System.exit(0);
+
+                            } else {
+                                System.out.println("Incorrect code try again!");
+                            }
+
+                        } while (code[codeIndex] != enteredCode);
+
                     }
                     break;
                 case 4:
+
+                    //Check Time Avalibality
                     for (int i = 0; i < Appointment4.length; i++) {
                         if (Appointment4[i] == null) {
                             full = false;
@@ -155,10 +218,30 @@ public class Gym_Login_System {
 
                     } else {
                         System.out.println("Great, this time is avalibale");
+
+                        int enteredCode;
+                        do {
+                            System.out.print("Please Enter the verification code: ");
+                            enteredCode = input.nextInt();
+
+                            //Check Verification Code
+                            if (code[codeIndex] == enteredCode) {
+                                Appoinment appointment = new Appoinment(MemberID, 4);
+                                appointments.add(appointment);
+                                System.out.println("Appointment has been successfully booked. Have a nice day! ");
+                                codeIndex++;
+                                System.exit(0);
+                            } else {
+                                System.out.println("Incorrect code try again!");
+                            }
+
+                        } while (code[codeIndex] != enteredCode);
+
                     }
                     break;
                 case 5:
 
+                    //Check Time Avalibality
                     for (int i = 0; i < Appointment5.length; i++) {
                         if (Appointment5[i] == null) {
                             full = false;
@@ -169,10 +252,30 @@ public class Gym_Login_System {
 
                     } else {
                         System.out.println("Great, this time is avalibale");
+
+                        int enteredCode;
+                        do {
+                            System.out.print("Please Enter the verification code: ");
+                            enteredCode = input.nextInt();
+
+                            //Check Verification Code
+                            if (code[codeIndex] == enteredCode) {
+                                Appoinment appointment = new Appoinment(MemberID, 5);
+                                appointments.add(appointment);
+                                System.out.println("Appointment has been successfully booked. Have a nice day! ");
+                                codeIndex++;
+                                System.exit(0);
+                            } else {
+                                System.out.println("Incorrect code try again!");
+                            }
+
+                        } while (code[codeIndex] != enteredCode);
+
                     }
                     break;
                 case 6:
 
+                    //Check Time Avalibality
                     for (int i = 0; i < Appointment6.length; i++) {
                         if (Appointment6[i] == null) {
                             full = false;
@@ -183,9 +286,30 @@ public class Gym_Login_System {
 
                     } else {
                         System.out.println("Great, this time is avalibale");
+
+                        int enteredCode;
+                        do {
+                            System.out.print("Please Enter the verification code: ");
+                            enteredCode = input.nextInt();
+
+                            //Check Verification Code
+                            if (code[codeIndex] == enteredCode) {
+                                Appoinment appointment = new Appoinment(MemberID, 6);
+                                appointments.add(appointment);
+                                System.out.println("Appointment has been successfully booked. Have a nice day! ");
+                                codeIndex++;
+                                System.exit(0);
+                            } else {
+                                System.out.println("Incorrect code try again!");
+                            }
+
+                        } while (code[codeIndex] != enteredCode);
+
                     }
                     break;
                 case 7:
+
+                    //Check Time Avalibality
                     for (int i = 0; i < Appointment7.length; i++) {
                         if (Appointment7[i] == null) {
                             full = false;
@@ -196,9 +320,30 @@ public class Gym_Login_System {
 
                     } else {
                         System.out.println("Great, this time is avalibale");
+
+                        int enteredCode;
+                        do {
+                            System.out.print("Please Enter the verification code: ");
+                            enteredCode = input.nextInt();
+
+                            //Check Verification Code
+                            if (code[codeIndex] == enteredCode) {
+                                Appoinment appointment = new Appoinment(MemberID, 7);
+                                appointments.add(appointment);
+                                System.out.println("Appointment has been successfully booked. Have a nice day! ");
+                                codeIndex++;
+                                System.exit(0);
+                            } else {
+                                System.out.println("Incorrect code try again!");
+                            }
+
+                        } while (code[codeIndex] != enteredCode);
+
                     }
                     break;
                 case 8:
+
+                    //Check Time Avalibality
                     for (int i = 0; i < Appointment8.length; i++) {
                         if (Appointment8[i] == null) {
                             full = false;
@@ -209,18 +354,36 @@ public class Gym_Login_System {
 
                     } else {
                         System.out.println("Great, this time is avalibale");
+
+                        int enteredCode;
+                        do {
+                            System.out.print("Please Enter the verification code: ");
+                            enteredCode = input.nextInt();
+
+                            //Check Verification Code
+                            if (code[codeIndex] == enteredCode) {
+                                Appoinment appointment = new Appoinment(MemberID, 8);
+                                appointments.add(appointment);
+                                System.out.println("Appointment has been successfully booked. Have a nice day! ");
+                                codeIndex++;
+                                System.exit(0);
+                            } else {
+                                System.out.println("Incorrect code try again!");
+                            }
+
+                        } while (code[codeIndex] != enteredCode);
+
                     }
                     break;
 
             }
         } while (full);
-                
 
     }
     //********************************************
 
-   public static void DisplayTimetable() {
-            System.out.println();
+    public static void DisplayTimetable() {
+        System.out.println();
         System.out.println();
         System.out.println(" -------------------------------------------------------------------- ");
         System.out.println("             Welcome, This is the Timetable for the gym:               ");
@@ -245,8 +408,8 @@ public class Gym_Login_System {
         System.out.println("________________________");
         System.out.println();
         System.out.print("  Enter The appointment Number: ");
-    } 
-    
+    }
+
     public static void ScanChipOfMember() {
 
     }
@@ -262,4 +425,3 @@ public class Gym_Login_System {
     }
 
 }
-
