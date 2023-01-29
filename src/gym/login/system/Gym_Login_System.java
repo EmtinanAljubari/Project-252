@@ -96,51 +96,157 @@ public class Gym_Login_System {
         
         
         //---------------------------------------------------------------------
-        System.out.println();
-        System.out.println();
-        System.out.println(" -------------------------------------------------------------------- ");
-        System.out.println("             Welcome, This is the Timetable for the gym:               ");
-        System.out.println(" ______________________________________________________________________");
-        System.out.println("                            Morning Time (AM)                          ");
-        System.out.println(" _______________________________________________________________________");
-        System.out.println(" Appointment Number      Branch        Day       Date        Time      ");
-        System.out.println("________________________________________________________________________");
-        System.out.println("          1:             AL-SAFA      Sunday   01-1-2023   07:00-09:00  ");
-        System.out.println("          2:             AL-REHAB     Monday   02-1-2023   08:00-09:00  ");
-        System.out.println("          3:             AL-BAWADI    Sunday   01-1-2023   07:00-09:00  ");
-        System.out.println("          4:             AL-SAFA      Sunday   01-1-2023   09:00-11:00  ");
-        System.out.println("________________________________________________________________________");
-        System.out.println("                            Evening Time (PM)                          ");
-        System.out.println(" _______________________________________________________________________");
-        System.out.println(" Appointment Number      Branch        Day       Date        Time      ");
-        System.out.println("________________________________________________________________________");
-        System.out.println("          5:             AL-SAFA      Sunday   01-1-2023   12:00-02:00  ");
-        System.out.println("          6:             AL-REHAB     Monday   02-1-2023   08:00-10:00  ");
-        System.out.println("          7:             AL-BAWADI    Sunday   01-1-2023   07:00-09:00  ");
-        System.out.println("          8:             AL-SAFA      Sunday   01-1-2023   10:00-11:00  ");
-        System.out.println("________________________________________________________________________");
-        System.out.println();
-        System.out.print("  Enter The appointment Number: ");
-        int AP_Number=input.nextInt();
-        
-        switch(AP_Number){
-            
-            case 1: break;
-            case 2: break;
-            case 3: break;
-            case 4: break;
-            case 5: break;
-            case 6: break;
-            case 7: break;
-            case 8: break;
+    
+        boolean full = true;
+        do {
+            DisplayTimetable();
+            int AP_Number = input.nextInt();
+            switch (AP_Number) {
 
-                
-        }
+                case 1:
+
+                    for (int i = 0; i < Appointment1.length; i++) {
+                        if (Appointment1[i] == null) {
+                            full = false;
+                        }
+                    }
+                    if (full) {
+                        System.out.println("Sorry, this time is unavalibale! Please select another time");
+
+                    } else {
+                        System.out.println("Great, this time is avalibale");
+                    }
+
+                    break;
+                case 2:
+                    for (int i = 0; i < Appointment2.length; i++) {
+                        if (Appointment2[i] == null) {
+                            full = false;
+                        }
+                    }
+                    if (full) {
+                        System.out.println("Sorry, this time is unavalibale! Please select another time");
+
+                    } else {
+                        System.out.println("Great, this time is avalibale");
+                    }
+                    break;
+                case 3:
+                    for (int i = 0; i < Appointment3.length; i++) {
+                        if (Appointment3[i] == null) {
+                            full = false;
+                        }
+                    }
+                    if (full) {
+                        System.out.println("Sorry, this time is unavalibale! Please select another time");
+
+                    } else {
+                        System.out.println("Great, this time is avalibale");
+                    }
+                    break;
+                case 4:
+                    for (int i = 0; i < Appointment4.length; i++) {
+                        if (Appointment4[i] == null) {
+                            full = false;
+                        }
+                    }
+                    if (full) {
+                        System.out.println("Sorry, this time is unavalibale! Please select another time");
+
+                    } else {
+                        System.out.println("Great, this time is avalibale");
+                    }
+                    break;
+                case 5:
+
+                    for (int i = 0; i < Appointment5.length; i++) {
+                        if (Appointment5[i] == null) {
+                            full = false;
+                        }
+                    }
+                    if (full) {
+                        System.out.println("Sorry, this time is unavalibale! Please select another time");
+
+                    } else {
+                        System.out.println("Great, this time is avalibale");
+                    }
+                    break;
+                case 6:
+
+                    for (int i = 0; i < Appointment6.length; i++) {
+                        if (Appointment6[i] == null) {
+                            full = false;
+                        }
+                    }
+                    if (full) {
+                        System.out.println("Sorry, this time is unavalibale! Please select another time");
+
+                    } else {
+                        System.out.println("Great, this time is avalibale");
+                    }
+                    break;
+                case 7:
+                    for (int i = 0; i < Appointment7.length; i++) {
+                        if (Appointment7[i] == null) {
+                            full = false;
+                        }
+                    }
+                    if (full) {
+                        System.out.println("Sorry, this time is unavalibale! Please select another time");
+
+                    } else {
+                        System.out.println("Great, this time is avalibale");
+                    }
+                    break;
+                case 8:
+                    for (int i = 0; i < Appointment8.length; i++) {
+                        if (Appointment8[i] == null) {
+                            full = false;
+                        }
+                    }
+                    if (full) {
+                        System.out.println("Sorry, this time is unavalibale! Please select another time");
+
+                    } else {
+                        System.out.println("Great, this time is avalibale");
+                    }
+                    break;
+
+            }
+        } while (full);
                 
 
     }
     //********************************************
 
+   public static void DisplayTimetable() {
+            System.out.println();
+        System.out.println();
+        System.out.println(" -------------------------------------------------------------------- ");
+        System.out.println("             Welcome, This is the Timetable for the gym:               ");
+        System.out.println(" ________________________");
+        System.out.println("                            Morning Time (AM)                          ");
+        System.out.println(" _________________________");
+        System.out.println(" Appointment Number      Branch        Day       Date        Time      ");
+        System.out.println("________________________");
+        System.out.println("          1:             AL-SAFA      Sunday   01-1-2023   07:00-09:00  ");
+        System.out.println("          2:             AL-REHAB     Monday   02-1-2023   08:00-09:00  ");
+        System.out.println("          3:             AL-BAWADI    Sunday   01-1-2023   07:00-09:00  ");
+        System.out.println("          4:             AL-SAFA      Sunday   01-1-2023   09:00-11:00  ");
+        System.out.println("________________________");
+        System.out.println("                            Evening Time (PM)                          ");
+        System.out.println(" _________________________");
+        System.out.println(" Appointment Number      Branch        Day       Date        Time      ");
+        System.out.println("________________________");
+        System.out.println("          5:             AL-SAFA      Sunday   01-1-2023   12:00-02:00  ");
+        System.out.println("          6:             AL-REHAB     Monday   02-1-2023   08:00-10:00  ");
+        System.out.println("          7:             AL-BAWADI    Sunday   01-1-2023   07:00-09:00  ");
+        System.out.println("          8:             AL-SAFA      Sunday   01-1-2023   10:00-11:00  ");
+        System.out.println("________________________");
+        System.out.println();
+        System.out.print("  Enter The appointment Number: ");
+    } 
+    
     public static void ScanChipOfMember() {
 
     }
