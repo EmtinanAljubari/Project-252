@@ -103,9 +103,7 @@ public class Gym_Login_System {
         Member[] Appointment7 = new Member[4];
         Member[] Appointment8 = new Member[4];
 
-        
-        //Evening Time (PM) 
-        
+      
     
        
         
