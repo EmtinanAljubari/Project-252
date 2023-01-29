@@ -13,6 +13,10 @@ public class Member {
 
     int MemberID;
 
+    public Member() {
+
+    }
+
     public Member(int MemberID) {
         this.MemberID = MemberID;
     }

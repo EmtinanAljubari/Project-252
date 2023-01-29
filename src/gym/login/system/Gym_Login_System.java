@@ -63,6 +63,46 @@ public class Gym_Login_System {
         
         //Morning Time (AM) 
         
+        Member[] Appointment1 = new Member[4];
+        for (int i = 0; i < Appointment1.length; i++) {
+            Appointment1[i] = new Member();
+        }
+        for (int i = 0; i < Appointment1.length; i++) {
+            Appointment1[i].setMemberID(input.nextInt());
+        }
+
+        Member[] Appointment2 = new Member[4];
+        for (int i = 0; i < Appointment2.length; i++) {
+            Appointment2[i] = new Member();
+        }
+        for (int i = 0; i < Appointment2.length; i++) {
+            Appointment2[i].setMemberID(input.nextInt());
+        }
+
+        Member[] Appointment3 = new Member[4];
+        Member[] Appointment4 = new Member[4];
+
+           //Evening Time (PM) 
+         
+        Member[] Appointment5 = new Member[4];
+        for (int i = 0; i < Appointment5.length; i++) {
+            Appointment5[i] = new Member();
+        }
+        for (int i = 0; i < Appointment5.length; i++) {
+            Appointment5[i].setMemberID(input.nextInt());
+        }
+
+        Member[] Appointment6 = new Member[4];
+        for (int i = 0; i < Appointment6.length; i++) {
+            Appointment6[i] = new Member();
+        }
+        for (int i = 0; i < Appointment6.length; i++) {
+            Appointment6[i].setMemberID(input.nextInt());
+        }
+
+        Member[] Appointment7 = new Member[4];
+        Member[] Appointment8 = new Member[4];
+
         
         //Evening Time (PM) 
         
