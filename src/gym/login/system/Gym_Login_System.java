@@ -20,57 +20,59 @@ public class Gym_Login_System {
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
-            //--------------------------------
-            //-----------------------------------
-            //Initialize array Here
-            //Morning Time (AM)
-            Member[] Appointment1 = new Member[4];
-            for (int i = 0; i < Appointment1.length; i++) {
-                Appointment1[i] = new Member();
-                Appointment1[i].setMemberID(i + 100);
-                MembersID.add(i + 100);
-            }
+        //--------------------------------
+        //-----------------------------------
+        //Initialize array Here
+        //Morning Time (AM)
+        Member[] Appointment1 = new Member[4];
+        for (int i = 0; i < Appointment1.length; i++) {
+            Appointment1[i] = new Member();
+            int MemberId = i + 100;
+            Appointment1[i].setMemberID(MemberId);
+            MembersID.add(MemberId);
+            Appoinment appointment = new Appoinment(MemberId, 1);
+            appointments.add(appointment);
+        }
 
-            Member[] Appointment2 = new Member[4];
-            for (int i = 0; i < Appointment2.length; i++) {
-                Appointment2[i] = new Member();
-                Appointment2[i].setMemberID(i + 200);
-                MembersID.add(i + 200);
+        Member[] Appointment2 = new Member[4];
+        for (int i = 0; i < Appointment2.length; i++) {
+            Appointment2[i] = new Member();
+            int MemberId = i + 200;
+            Appointment2[i].setMemberID(MemberId);
+            MembersID.add(MemberId);
+            Appoinment appointment = new Appoinment(MemberId, 2);
+            appointments.add(appointment);
+        }
 
-            }
-            // arrays that are available to reserve in Morning Time (AM)
+        // arrays that are available to reserve in Morning Time (AM)
+        Member[] Appointment3 = new Member[4];
+        Member[] Appointment4 = new Member[4];
 
-            Member[] Appointment3 = new Member[4];
-            Member[] Appointment4 = new Member[4];
+        //****************
+        //Evening Time (PM)
+        Member[] Appointment5 = new Member[4];
+        for (int i = 0; i < Appointment5.length; i++) {
+            Appointment5[i] = new Member();
+            int MemberId = i + 300;
+            Appointment5[i].setMemberID(MemberId);
+            MembersID.add(MemberId);
+            Appoinment appointment = new Appoinment(MemberId, 5);
+            appointments.add(appointment);
+        }
 
-            //****************
-            //Evening Time (PM)
-            Member[] Appointment5 = new Member[4];
-            for (int i = 0; i < Appointment5.length; i++) {
-                Appointment5[i] = new Member();
-                Appointment5[i].setMemberID(i + 300);
-               MembersID.add(i + 300);
+        Member[] Appointment6 = new Member[4];
+        for (int i = 0; i < Appointment6.length; i++) {
+            Appointment6[i] = new Member();
+            int MemberId = i + 400;
+            Appointment6[i].setMemberID(MemberId);
+            MembersID.add(MemberId);
+            Appoinment appointment = new Appoinment(MemberId, 6);
+            appointments.add(appointment);
+        }
 
-            }
-
-            Member[] Appointment6 = new Member[4];
-            for (int i = 0; i < Appointment6.length; i++) {
-                Appointment6[i] = new Member();
-                Appointment6[i].setMemberID(i + 400);
-                MembersID.add(i + 400);
-
-            }
-
-            // arrays that are available to reserve in Evening Time (PM)
-            Member[] Appointment7 = new Member[4];
-            Member[] Appointment8 = new Member[4];
-
-//            //an array of members with no appointment
-//            Member[] NoAppointment = new Member[4];
-//            for (int i = 0; i < NoAppointment.length; i++) {
-//                NoAppointment[i] = new Member();
-//                NoAppointment[i].setMemberID(i + 500);
-//            }
+        // arrays that are available to reserve in Evening Time (PM)
+        Member[] Appointment7 = new Member[4];
+        Member[] Appointment8 = new Member[4];
 
         System.out.print("Pleas enter your MemberID: ");
         int MemberID = input.nextInt();
@@ -91,8 +93,6 @@ public class Gym_Login_System {
             System.out.print("Pleas enter your choice Here:");
             choice = input.nextInt();
 
-            
-
             //--------call method depending on choice-------------
             if (choice == 1) {
                 ReserveAppointment(input, MemberID, Appointment1, Appointment2,
@@ -102,8 +102,7 @@ public class Gym_Login_System {
                 System.out.println();
 
             } else if (choice == 2) {
-                ScanChipOfMember( MemberID, Appointment1, Appointment2,
-                         Appointment5, Appointment6, MembersID);
+                ScanChipOfMember(MemberID, appointments, MembersID);
                 System.out.println();
                 System.out.println();
 
@@ -264,71 +263,47 @@ public class Gym_Login_System {
     }
     //********************************************
 
-    public static void ScanChipOfMember(int MemberID, Member[] Appointment1, Member[] Appointment2,
-            Member[] Appointment5, Member[] Appointment6,ArrayList<Integer> MembersID) {
+    public static void ScanChipOfMember(int MemberID, ArrayList<Appoinment> appointments, ArrayList<Integer> MembersID) {
 
-           //Vaiald MemberID with reservation
-        for (int i = 0; i < Appointment1.length; i++) {
-            if (MemberID == Appointment1[i].getMemberID()) {
-                for (int j = 0; j < MembersID.size(); j++) {
-                    if(MemberID== MembersID.get(j))
-                 System.out.println("Welcome, The gate will open");
-                    break;
-                } 
-              break;  
-            }
-            
-        }
+        boolean HaveAppointment = false;
+        boolean VaildId = false;
 
-        for (int i = 0; i < Appointment2.length; i++) {
-            if (MemberID == Appointment2[i].getMemberID()) {
-                for (int j = 0; j < MembersID.size(); j++) {
-                    if(MemberID== MembersID.get(j))
-                 System.out.println("Welcome, The gate will open");
-                    break;
-                } 
-            }
-        }
-
-        for (int i = 0; i < Appointment5.length; i++) {
-              if (MemberID == Appointment5[i].getMemberID()) {
-                for (int j = 0; j < MembersID.size(); j++) {
-                    if(MemberID== MembersID.get(j))
-                 System.out.println("Welcome, The gate will open");
-                    break;
-                } 
-            }
-        }
-        for (int i = 0; i < Appointment6.length; i++) {
-               if (MemberID == Appointment6[i].getMemberID()) {
-                for (int j = 0; j < MembersID.size(); j++) {
-                    if(MemberID== MembersID.get(j))
-                 System.out.println("Welcome, The gate will open");
-                    break;
-                } 
-            }
-        }
-        
-        //Have MemberID but without reservation
+        //Vaiald MemberID with reservation
         for (int i = 0; i < MembersID.size(); i++) {
-            if(MemberID== MembersID.get(i)){
-             System.out.println("Sorry you are not allowed to get in( No reservation), The gate will not open");
-             
-            }
-            break;
-        }
-        
-        //Invaild MemberID
-       for (int i = 0; i < MembersID.size(); i++) {
-            if(MemberID!= MembersID.get(i)){
-             System.out.println("Sorry you are not allowed to get in (Invaild MemberID), The gate will not open"); 
-            }
-            break;
-        }
-    }
-        
-    //*********************************************
+            if (MemberID == MembersID.get(i)) {
+                for (int j = 0; j < appointments.size(); j++) {
+                    if (MemberID == appointments.get(j).getUserId()) {
+                        HaveAppointment = true;
+                        break;
+                    }
 
+                }
+
+            }
+
+        }
+
+        if (HaveAppointment) {
+            System.out.println("Welcome, The gate will open");
+        } else {
+            System.out.println("Sorry you are not allowed to get in(No reservation), The gate will not open");
+        }
+
+        for (int i = 0; i < MembersID.size(); i++) {
+            if (MemberID == MembersID.get(i)) {
+                VaildId = true;
+                break;
+
+            }
+
+        }
+        if (VaildId == false) {
+            System.out.println("Sorry you are not allowed to get in (Invaild MemberID), The gate will not open");
+        }
+
+    }
+
+    //*********************************************
     public static void ScanChipOfEmployee() {
 
     }
