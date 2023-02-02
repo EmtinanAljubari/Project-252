@@ -14,6 +14,7 @@ public class Gym_Login_System {
 
     static ArrayList<Appoinment> appointments = new ArrayList<Appoinment>();
     static ArrayList<Integer> MembersID = new ArrayList<Integer>();
+    static int [] EmployeesID = new int[10];
     
 
     static int codeIndex = 0;
@@ -74,6 +75,14 @@ public class Gym_Login_System {
         // arrays that are available to reserve in Evening Time (PM)
         Member[] Appointment7 = new Member[4];
         Member[] Appointment8 = new Member[4];
+        
+        
+         
+        // Assign Employees id
+        for (int i = 0; i < EmployeesID.length; i++) {
+            EmployeesID[i] = i+1000;
+        }
+        //**********************************************************
 
         System.out.print("Pleas enter your User ID: ");
         int UserID = input.nextInt();
@@ -108,7 +117,7 @@ public class Gym_Login_System {
                 System.out.println();
 
             } else if (choice == 3) {
-                ScanChipOfEmployee(UserID);
+                ScanChipOfEmployee(UserID,EmployeesID);
 
             } else if (choice == 4) {
                 PrintReportManagement();
@@ -305,17 +314,9 @@ public class Gym_Login_System {
     }
 
     //*********************************************
-    public static void ScanChipOfEmployee( int EmployeeID) {
-        
-
-        //Initialize Employyes ID array
-        int [] EmployeesID = new int[10];
-        for (int i = 0; i < EmployeesID.length; i++) {
-            EmployeesID[i] = i+1000;
-        }
+    public static void ScanChipOfEmployee( int EmployeeID,int [] EmployeesID ) {
         
         // Check if ID is valid
-        
         boolean vaildId = false;
         for (int i = 0; i < EmployeesID.length; i++) {
             if(EmployeeID==EmployeesID[i]){
