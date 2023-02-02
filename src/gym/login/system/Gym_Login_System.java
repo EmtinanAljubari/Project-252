@@ -14,6 +14,7 @@ public class Gym_Login_System {
 
     static ArrayList<Appoinment> appointments = new ArrayList<Appoinment>();
     static ArrayList<Integer> MembersID = new ArrayList<Integer>();
+    
 
     static int codeIndex = 0;
 
@@ -74,9 +75,9 @@ public class Gym_Login_System {
         Member[] Appointment7 = new Member[4];
         Member[] Appointment8 = new Member[4];
 
-        System.out.print("Pleas enter your MemberID: ");
-        int MemberID = input.nextInt();
-        MembersID.add(MemberID);
+        System.out.print("Pleas enter your User ID: ");
+        int UserID = input.nextInt();
+        MembersID.add(UserID);
 
         int choice;
         System.out.println();
@@ -95,19 +96,19 @@ public class Gym_Login_System {
 
             //--------call method depending on choice-------------
             if (choice == 1) {
-                ReserveAppointment(input, MemberID, Appointment1, Appointment2,
+                ReserveAppointment(input, UserID, Appointment1, Appointment2,
                         Appointment3, Appointment4, Appointment5, Appointment6,
                         Appointment7, Appointment8);
                 System.out.println();
                 System.out.println();
 
             } else if (choice == 2) {
-                ScanChipOfMember(MemberID, appointments, MembersID);
+                ScanChipOfMember(UserID, appointments, MembersID);
                 System.out.println();
                 System.out.println();
 
             } else if (choice == 3) {
-                ScanChipOfEmployee();
+                ScanChipOfEmployee(UserID);
 
             } else if (choice == 4) {
                 PrintReportManagement();
@@ -304,7 +305,31 @@ public class Gym_Login_System {
     }
 
     //*********************************************
-    public static void ScanChipOfEmployee() {
+    public static void ScanChipOfEmployee( int EmployeeID) {
+        
+
+        //Initialize Employyes ID array
+        int [] EmployeesID = new int[10];
+        for (int i = 0; i < EmployeesID.length; i++) {
+            EmployeesID[i] = i+1000;
+        }
+        
+        // Check if ID is valid
+        
+        boolean vaildId = false;
+        for (int i = 0; i < EmployeesID.length; i++) {
+            if(EmployeeID==EmployeesID[i]){
+                vaildId= true;
+                break;
+            }
+        }
+        
+        if(vaildId){
+            System.out.println("Welcome, The gate will open (System will record the time)");
+        } else {
+            System.out.println("Sorry you are not allowed to get in (Invaild EmployeeID), The gate will not open");
+        }
+            System.out.println();
 
     }
     //*********************************************
