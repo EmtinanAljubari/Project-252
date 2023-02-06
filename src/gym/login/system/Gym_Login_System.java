@@ -14,8 +14,7 @@ public class Gym_Login_System {
 
     static ArrayList<Appoinment> appointments = new ArrayList<Appoinment>();
     static ArrayList<Integer> MembersID = new ArrayList<Integer>();
-    static int [] EmployeesID = new int[10];
-    
+    static int[] EmployeesID = new int[10];
 
     static int codeIndex = 0;
 
@@ -75,12 +74,10 @@ public class Gym_Login_System {
         // arrays that are available to reserve in Evening Time (PM)
         Member[] Appointment7 = new Member[4];
         Member[] Appointment8 = new Member[4];
-        
-        
-         
+
         // Assign Employees id
         for (int i = 0; i < EmployeesID.length; i++) {
-            EmployeesID[i] = i+1000;
+            EmployeesID[i] = i + 1000;
         }
         //**********************************************************
 
@@ -117,7 +114,7 @@ public class Gym_Login_System {
                 System.out.println();
 
             } else if (choice == 3) {
-                ScanChipOfEmployee(UserID,EmployeesID);
+                ScanChipOfEmployee(UserID, EmployeesID);
 
             } else if (choice == 4) {
                 PrintReportManagement();
@@ -314,29 +311,59 @@ public class Gym_Login_System {
     }
 
     //*********************************************
-    public static void ScanChipOfEmployee( int EmployeeID,int [] EmployeesID ) {
-        
+    public static void ScanChipOfEmployee(int EmployeeID, int[] EmployeesID) {
+
         // Check if ID is valid
         boolean vaildId = false;
         for (int i = 0; i < EmployeesID.length; i++) {
-            if(EmployeeID==EmployeesID[i]){
-                vaildId= true;
+            if (EmployeeID == EmployeesID[i]) {
+                vaildId = true;
                 break;
             }
         }
-        
-        if(vaildId){
+
+        if (vaildId) {
             System.out.println("Welcome, The gate will open (System will record the time)");
         } else {
             System.out.println("Sorry you are not allowed to get in (Invaild EmployeeID), The gate will not open");
         }
-            System.out.println();
+        System.out.println();
 
     }
     //*********************************************
 
     public static void PrintReportManagement() {
+        Scanner input = new Scanner(System.in);
+        System.out.println(" -------------------------------------------------------------------- ");
+        System.out.println("               please choose one of the following options              ");
+        System.out.println(" -------------------------------------------------------------------- ");
+        System.out.println(" 1. Print the employee's weekly report ");
+        System.out.println(" 2. Print the weekly report for all employees");
+        System.out.println(" 3. Check the employees weekly report ");
+        System.out.println(" 4. Check the weekly report for all employees ");
+        System.out.print("Pleas enter your choice Here:");
+        int choice = input.nextInt();
 
+        switch (choice) {
+
+            case 1:
+                EmployeeReport(EmployeesID);
+                System.out.println("- - - - - - - -  -  printed successfully - - - - - - - - - - ");
+                break;
+            case 2:
+                AllEmployeeReport(EmployeesID);
+                System.out.println("- - - - - - - -  printed successfully - - - - - - - - ");
+                break;
+            case 3:
+                EmployeeReport(EmployeesID);
+                System.out.println("- - - -  This report is for viewing, not for print - - - -  ");
+                break;
+            case 4:
+                AllEmployeeReport(EmployeesID);
+
+                System.out.println("- - - -   This report is for viewing, not for print - - - - ");
+                break;
+        }
     }
 
     //----------------Methods of Functions----------------------
@@ -398,5 +425,84 @@ public class Gym_Login_System {
             }
 
         } while (code[codeIndex] != enteredCode);
+    }
+
+    private static void EmployeeReport(int[] EmployeesID) {
+
+        Scanner input = new Scanner(System.in);
+        int ID;
+        Random rn = new Random();
+        Random m = new Random();
+        int month = m.nextInt(12);
+        boolean vaildId = false;
+        System.out.println(" Enter the employee ID");
+        do {
+            ID = input.nextInt();
+            for (int i = 0; i < EmployeesID.length; i++) {
+                if (ID == EmployeesID[i]) {
+                    vaildId = true;
+                    break;
+                }
+            }
+
+            if (vaildId == true) {
+                AttendanceEmployee(ID, rn, month);
+
+            } else {
+                System.out.println(" Invalid ID Please enter a valid ID :");
+
+            }
+        } while (vaildId == false);
+
+    }
+
+    private static void AllEmployeeReport(int[] EmployeesID) {
+        System.out.println("");
+        System.out.println(" All Employee attendance report ");
+        Random m = new Random();
+        Random rn = new Random();
+        int month = m.nextInt(12);
+        for (int i = 0; i < EmployeesID.length; i++) {
+            System.out.println("- - - - - - - - - - - - - - - - - - - - -");
+
+            System.out.println(" Employee attendance report ");
+            System.out.println("- - - - - - - - - - - - - - - - - - - ");
+            System.out.println("");
+            System.out.println("Employee ID : " + EmployeesID[i] + "");
+            System.out.println("");
+            System.out.println("Time Attendance :             Date: ");
+            System.out.println("- - - - - - - - - - - - - - - - - - - - - - -  ");
+            System.out.println("");
+            for (int j = 0; j < 6; j++) {
+
+                int hour = rn.nextInt(10) + 1;
+                int minutes = rn.nextInt(60);
+                System.out.println("      " + hour + ":" + minutes + "                   " + 2023 + "-" + month + "-" + j);
+                System.out.println();
+            }
+
+        }
+
+    }
+
+    private static void AttendanceEmployee(int ID, Random rn, int month) {
+
+        System.out.println("- - - - - - - - - - - - - - - - - - - ");
+        System.out.println(" Employee attendance report ");
+        System.out.println("- - - - - - - - - - - - - - - - - - - ");
+        System.out.println("");
+        System.out.println("Employee ID : " + ID + "");
+        System.out.println("");
+        System.out.println("Time Attendance :             Date: ");
+        System.out.println("- - - - - - - - - - - - - - - - - - - - - - -  ");
+        System.out.println("");
+        for (int j = 0; j < 6; j++) {
+
+            int hour = rn.nextInt(10) + 1;
+            int minutes = rn.nextInt(60);
+            System.out.println("      " + hour + ":" + minutes + "                   " + 2023 + "-" + month + "-" + j);
+            System.out.println();
+        }
+
     }
 }
