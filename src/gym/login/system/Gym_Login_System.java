@@ -99,7 +99,7 @@ public class Gym_Login_System {
             System.out.println(" 5: End program");
             System.out.print("Pleas enter your choice Here:");
             choice = input.nextInt();
-
+            System.out.println();
             //--------call method depending on choice-------------
             if (choice == 1) {
                 ReserveAppointment(input, UserID, Appointment1, Appointment2,
@@ -296,6 +296,7 @@ public class Gym_Login_System {
             System.out.println("Sorry you are not allowed to get in(No reservation), The gate will not open");
         }
 
+        //Vaiald MemberID with no reservation
         for (int i = 0; i < MembersID.size(); i++) {
             if (MemberID == MembersID.get(i)) {
                 VaildId = true;
@@ -304,6 +305,7 @@ public class Gym_Login_System {
             }
 
         }
+        //Invaiald MemberID
         if (VaildId == false) {
             System.out.println("Sorry you are not allowed to get in (Invaild MemberID), The gate will not open");
         }
@@ -333,17 +335,17 @@ public class Gym_Login_System {
     //*********************************************
 
     public static void PrintReportManagement() {
+        int choice;
+        boolean again=true;
+        
         Scanner input = new Scanner(System.in);
-        System.out.println(" -------------------------------------------------------------------- ");
-        System.out.println("               please choose one of the following options              ");
-        System.out.println(" -------------------------------------------------------------------- ");
-        System.out.println(" 1. Print the employee's weekly report ");
-        System.out.println(" 2. Print the weekly report for all employees");
-        System.out.println(" 3. Check the employees weekly report ");
-        System.out.println(" 4. Check the weekly report for all employees ");
+        ReportMangmentList();
         System.out.print("Pleas enter your choice Here:");
-        int choice = input.nextInt();
-
+        choice = input.nextInt();
+        
+        while(again){
+        if(1<=choice && choice<=4){
+        
         switch (choice) {
 
             case 1:
@@ -352,7 +354,7 @@ public class Gym_Login_System {
                 break;
             case 2:
                 AllEmployeeReport(EmployeesID);
-                System.out.println("- - - - - - - -  printed successfully - - - - - - - - ");
+                System.out.println("- - - - - - - -  -  printed successfully - - - - - - - - - - ");
                 break;
             case 3:
                 EmployeeReport(EmployeesID);
@@ -360,12 +362,21 @@ public class Gym_Login_System {
                 break;
             case 4:
                 AllEmployeeReport(EmployeesID);
-
                 System.out.println("- - - -   This report is for viewing, not for print - - - - ");
                 break;
         }
+        
+        again=false;
+    }
+        else{
+            System.out.print("Invalid choice try again: ");
+            choice=input.nextInt();
+        }
+            
+        }
     }
 
+    //----------------------------------------------------------
     //----------------Methods of Functions----------------------
     public static void DisplayTimetable() {
         System.out.println();
@@ -426,7 +437,7 @@ public class Gym_Login_System {
 
         } while (code[codeIndex] != enteredCode);
     }
-
+  //*********************************************************
     private static void EmployeeReport(int[] EmployeesID) {
 
         Scanner input = new Scanner(System.in);
@@ -435,7 +446,7 @@ public class Gym_Login_System {
         Random m = new Random();
         int month = m.nextInt(12);
         boolean vaildId = false;
-        System.out.println(" Enter the employee ID");
+        System.out.print("Enter the employee ID: ");
         do {
             ID = input.nextInt();
             for (int i = 0; i < EmployeesID.length; i++) {
@@ -449,30 +460,29 @@ public class Gym_Login_System {
                 AttendanceEmployee(ID, rn, month);
 
             } else {
-                System.out.println(" Invalid ID Please enter a valid ID :");
+                System.out.println("Invalid ID Please enter a valid ID :");
 
             }
         } while (vaildId == false);
 
     }
-
+  //***************************************************************
     private static void AllEmployeeReport(int[] EmployeesID) {
-        System.out.println("");
+        System.out.println();
         System.out.println(" All Employee attendance report ");
         Random m = new Random();
         Random rn = new Random();
         int month = m.nextInt(12);
         for (int i = 0; i < EmployeesID.length; i++) {
-            System.out.println("- - - - - - - - - - - - - - - - - - - - -");
-
-            System.out.println(" Employee attendance report ");
-            System.out.println("- - - - - - - - - - - - - - - - - - - ");
-            System.out.println("");
+            System.out.println("- - - - - - - - - - - - - - - - - - - - - - -  ");
+            System.out.println(" Employee Attendance Report ");
+            System.out.println("- - - - - - - - - - - - - - - - - - - - - - -  ");
+            System.out.println();
             System.out.println("Employee ID : " + EmployeesID[i] + "");
-            System.out.println("");
+            System.out.println();
             System.out.println("Time Attendance :             Date: ");
             System.out.println("- - - - - - - - - - - - - - - - - - - - - - -  ");
-            System.out.println("");
+            System.out.println();
             for (int j = 0; j < 6; j++) {
 
                 int hour = rn.nextInt(10) + 1;
@@ -484,12 +494,13 @@ public class Gym_Login_System {
         }
 
     }
-
+ 
+    //**************************************************************
     private static void AttendanceEmployee(int ID, Random rn, int month) {
 
-        System.out.println("- - - - - - - - - - - - - - - - - - - ");
-        System.out.println(" Employee attendance report ");
-        System.out.println("- - - - - - - - - - - - - - - - - - - ");
+        System.out.println("- - - - - - - - - - - - - - - - - - - - - - -  ");
+        System.out.println(" Employee Attendance Report ");
+        System.out.println("- - - - - - - - - - - - - - - - - - - - - - -  ");
         System.out.println("");
         System.out.println("Employee ID : " + ID + "");
         System.out.println("");
@@ -504,5 +515,16 @@ public class Gym_Login_System {
             System.out.println();
         }
 
+    }
+    //*****************************************************************
+    public static void ReportMangmentList(){
+        System.out.println(" -------------------------------------------------------------------- ");
+        System.out.println("               please choose one of the following options              ");
+        System.out.println(" -------------------------------------------------------------------- ");
+        System.out.println(" 1. Print the employee's weekly report ");
+        System.out.println(" 2. Print the weekly report for all employees");
+        System.out.println(" 3. Check the employees weekly report ");
+        System.out.println(" 4. Check the weekly report for all employees ");
+        
     }
 }
