@@ -74,6 +74,11 @@ public class Gym_Login_System {
         // arrays that are available to reserve in Evening Time (PM)
         Member[] Appointment7 = new Member[4];
         Member[] Appointment8 = new Member[4];
+        
+        //Member without reservation
+        MembersID.add(1357);
+        MembersID.add(1234);
+        MembersID.add(9999);
 
         // Assign Employees id
         for (int i = 0; i < EmployeesID.length; i++) {
@@ -83,7 +88,6 @@ public class Gym_Login_System {
 
         System.out.print("Pleas enter your User ID: ");
         int UserID = input.nextInt();
-        MembersID.add(UserID);
 
         int choice;
         System.out.println();
@@ -105,7 +109,6 @@ public class Gym_Login_System {
                 ReserveAppointment(input, UserID, Appointment1, Appointment2,
                         Appointment3, Appointment4, Appointment5, Appointment6,
                         Appointment7, Appointment8);
-                System.out.println();
                 System.out.println();
 
             } else if (choice == 2) {
@@ -138,7 +141,6 @@ public class Gym_Login_System {
         do {
             DisplayTimetable();
             int AP_Number = input.nextInt();
-
             int[] code = {1046, 1174, 5252, 7896, 1294, 6076, 4343, 8854, 1020, 8550};
 
             switch (AP_Number) {
@@ -149,15 +151,11 @@ public class Gym_Login_System {
                     full = CheckTimeAvalibalty(Appointment1, full);
                     if (full) {
                         System.out.println("Sorry, this time is unavalibale! Please select another time");
-
                     } else {
                         System.out.println("Great, this time is avalibale");
-
                         //Verification Code
-                        CheckVerificationCode(input, code, codeIndex, MemberID, 1);
-
+                        CheckVerificationCode(input, code, codeIndex, MemberID, 1, MembersID);
                     }
-
                     break;
                 case 2:
 
@@ -165,13 +163,10 @@ public class Gym_Login_System {
                     full = CheckTimeAvalibalty(Appointment2, full);
                     if (full) {
                         System.out.println("Sorry, this time is unavalibale! Please select another time");
-
                     } else {
                         System.out.println("Great, this time is avalibale");
-
                         //Verification Code
-                        CheckVerificationCode(input, code, codeIndex, MemberID, 2);
-
+                        CheckVerificationCode(input, code, codeIndex, MemberID, 2, MembersID);
                     }
                     break;
                 case 3:
@@ -180,13 +175,10 @@ public class Gym_Login_System {
                     full = CheckTimeAvalibalty(Appointment3, full);
                     if (full) {
                         System.out.println("Sorry, this time is unavalibale! Please select another time");
-
                     } else {
                         System.out.println("Great, this time is avalibale");
-
                         //Verification Code
-                        CheckVerificationCode(input, code, codeIndex, MemberID, 3);
-
+                        CheckVerificationCode(input, code, codeIndex, MemberID, 3, MembersID);
                     }
                     break;
                 case 4:
@@ -195,13 +187,10 @@ public class Gym_Login_System {
                     full = CheckTimeAvalibalty(Appointment4, full);
                     if (full) {
                         System.out.println("Sorry, this time is unavalibale! Please select another time");
-
                     } else {
                         System.out.println("Great, this time is avalibale");
-
                         //Verification Code
-                        CheckVerificationCode(input, code, codeIndex, MemberID, 4);
-
+                        CheckVerificationCode(input, code, codeIndex, MemberID, 4, MembersID);
                     }
                     break;
                 case 5:
@@ -210,13 +199,10 @@ public class Gym_Login_System {
                     full = CheckTimeAvalibalty(Appointment5, full);
                     if (full) {
                         System.out.println("Sorry, this time is unavalibale! Please select another time");
-
                     } else {
                         System.out.println("Great, this time is avalibale");
-
                         //Verification Code
-                        CheckVerificationCode(input, code, codeIndex, MemberID, 5);
-
+                        CheckVerificationCode(input, code, codeIndex, MemberID, 5, MembersID);
                     }
                     break;
                 case 6:
@@ -225,13 +211,10 @@ public class Gym_Login_System {
                     full = CheckTimeAvalibalty(Appointment6, full);
                     if (full) {
                         System.out.println("Sorry, this time is unavalibale! Please select another time");
-
                     } else {
                         System.out.println("Great, this time is avalibale");
-
                         //Verification Code
-                        CheckVerificationCode(input, code, codeIndex, MemberID, 6);
-
+                        CheckVerificationCode(input, code, codeIndex, MemberID, 6, MembersID);
                     }
                     break;
                 case 7:
@@ -240,13 +223,11 @@ public class Gym_Login_System {
                     full = CheckTimeAvalibalty(Appointment7, full);
                     if (full) {
                         System.out.println("Sorry, this time is unavalibale! Please select another time");
-
+                        System.out.println();
                     } else {
                         System.out.println("Great, this time is avalibale");
-
                         //Verification Code
-                        CheckVerificationCode(input, code, codeIndex, MemberID, 7);
-
+                        CheckVerificationCode(input, code, codeIndex, MemberID, 7, MembersID);
                     }
                     break;
                 case 8:
@@ -255,18 +236,14 @@ public class Gym_Login_System {
                     full = CheckTimeAvalibalty(Appointment8, full);
                     if (full) {
                         System.out.println("Sorry, this time is unavalibale! Please select another time");
-
                     } else {
                         System.out.println("Great, this time is avalibale");
                         //Verification Code
-                        CheckVerificationCode(input, code, codeIndex, MemberID, 8);
-
+                        CheckVerificationCode(input, code, codeIndex, MemberID, 8, MembersID);
                     }
                     break;
-
             }
         } while (full);
-
     }
     //********************************************
 
@@ -281,6 +258,7 @@ public class Gym_Login_System {
                 for (int j = 0; j < appointments.size(); j++) {
                     if (MemberID == appointments.get(j).getUserId()) {
                         HaveAppointment = true;
+                        VaildId = true;
                         break;
                     }
 
@@ -289,21 +267,20 @@ public class Gym_Login_System {
             }
 
         }
-
         if (HaveAppointment) {
             System.out.println("Welcome, The gate will open");
         } else {
-            System.out.println("Sorry you are not allowed to get in(No reservation), The gate will not open");
-        }
 
-        //Vaiald MemberID with no reservation
-        for (int i = 0; i < MembersID.size(); i++) {
-            if (MemberID == MembersID.get(i)) {
-                VaildId = true;
-                break;
+            //Vaiald MemberID with no reservation
+            for (int i = 0; i < MembersID.size(); i++) {
+                if (MemberID == MembersID.get(i)) {
+                    System.out.println("Sorry you are not allowed to get in(No reservation), The gate will not open");
+                    VaildId = true;
+                    break;
+
+                }
 
             }
-
         }
         //Invaiald MemberID
         if (VaildId == false) {
@@ -329,58 +306,55 @@ public class Gym_Login_System {
         } else {
             return "Sorry you are not allowed to get in (Invaild EmployeeID), The gate will not open";
         }
-        
 
     }
     //*********************************************
 
     public static void PrintReportManagement() {
         int choice;
-        boolean again=true;
-        
+        boolean again = true;
+
         Scanner input = new Scanner(System.in);
         ReportMangmentList();
         System.out.print("Pleas enter your choice Here:");
         choice = input.nextInt();
-        
-        while(again){
-        if(1<=choice && choice<=4){
-        
-        switch (choice) {
 
-            case 1:
-                EmployeeReport(EmployeesID);
-                System.out.println("- - - - - - - -  -  printed successfully - - - - - - - - - - ");
-                break;
-            case 2:
-                AllEmployeeReport(EmployeesID);
-                System.out.println("- - - - - - - -  -  printed successfully - - - - - - - - - - ");
-                break;
-            case 3:
-                EmployeeReport(EmployeesID);
-                System.out.println("- - - -  This report is for viewing, not for print - - - -  ");
-                break;
-            case 4:
-                AllEmployeeReport(EmployeesID);
-                System.out.println("- - - -   This report is for viewing, not for print - - - - ");
-                break;
-        }
-        
-        again=false;
-    }
-        else{
-            System.out.print("Invalid choice try again: ");
-            choice=input.nextInt();
-        }
-            
+        while (again) {
+            if (1 <= choice && choice <= 4) {
+
+                switch (choice) {
+
+                    case 1:
+                        EmployeeReport(EmployeesID);
+                        System.out.println("- - - - - - - -  -  printed successfully - - - - - - - - - - ");
+                        break;
+                    case 2:
+                        AllEmployeeReport(EmployeesID);
+                        System.out.println("- - - - - - - -  -  printed successfully - - - - - - - - - - ");
+                        break;
+                    case 3:
+                        EmployeeReport(EmployeesID);
+                        System.out.println("- - - -  This report is for viewing, not for print - - - -  ");
+                        break;
+                    case 4:
+                        AllEmployeeReport(EmployeesID);
+                        System.out.println("- - - -   This report is for viewing, not for print - - - - ");
+                        break;
+                }
+
+                again = false;
+            } else {
+                System.out.print("Invalid choice try again: ");
+                choice = input.nextInt();
+            }
+
         }
     }
 
     //----------------------------------------------------------
     //----------------Methods of Functions----------------------
     public static void DisplayTimetable() {
-        System.out.println();
-        System.out.println();
+
         System.out.println(" -------------------------------------------------------------------- ");
         System.out.println("             Welcome, This is the Timetable for the gym:               ");
         System.out.println(" ______________________________________________________________________");
@@ -418,7 +392,7 @@ public class Gym_Login_System {
     }
 
     //***************************************************************************
-    public static void CheckVerificationCode(Scanner input, int code[], int index, int MemberID, int appointmentTime) {
+    public static void CheckVerificationCode(Scanner input, int code[], int index, int MemberID, int appointmentTime, ArrayList<Integer> MembersID) {
         int enteredCode;
         do {
             System.out.print("Please Enter the verification code: ");
@@ -428,16 +402,19 @@ public class Gym_Login_System {
             if (code[codeIndex] == enteredCode) {
                 Appoinment appointment = new Appoinment(MemberID, appointmentTime);
                 appointments.add(appointment);
+                MembersID.add(MemberID);
                 System.out.println("Appointment has been successfully booked. Have a nice day! ");
                 codeIndex++;
                 break;
             } else {
                 System.out.println("Incorrect code try again!");
+                System.out.println();
             }
 
         } while (code[codeIndex] != enteredCode);
     }
-  //*********************************************************
+    //*********************************************************
+
     private static void EmployeeReport(int[] EmployeesID) {
 
         Scanner input = new Scanner(System.in);
@@ -466,7 +443,8 @@ public class Gym_Login_System {
         } while (vaildId == false);
 
     }
-  //***************************************************************
+    //***************************************************************
+
     private static void AllEmployeeReport(int[] EmployeesID) {
         System.out.println();
         System.out.println(" All Employee attendance report ");
@@ -494,7 +472,7 @@ public class Gym_Login_System {
         }
 
     }
- 
+
     //**************************************************************
     private static void AttendanceEmployee(int ID, Random rn, int month) {
 
@@ -516,8 +494,9 @@ public class Gym_Login_System {
         }
 
     }
+
     //*****************************************************************
-    public static void ReportMangmentList(){
+    public static void ReportMangmentList() {
         System.out.println(" -------------------------------------------------------------------- ");
         System.out.println("               please choose one of the following options              ");
         System.out.println(" -------------------------------------------------------------------- ");
@@ -525,6 +504,6 @@ public class Gym_Login_System {
         System.out.println(" 2. Print the weekly report for all employees");
         System.out.println(" 3. Check the employees weekly report ");
         System.out.println(" 4. Check the weekly report for all employees ");
-        
+
     }
 }
