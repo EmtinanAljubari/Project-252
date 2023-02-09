@@ -117,7 +117,8 @@ public class Gym_Login_System {
                 System.out.println();
 
             } else if (choice == 3) {
-                ScanChipOfEmployee(UserID, EmployeesID);
+                System.out.println(ScanChipOfEmployee(UserID, EmployeesID));
+                System.out.println();
 
             } else if (choice == 4) {
                 PrintReportManagement();
