@@ -313,7 +313,7 @@ public class Gym_Login_System {
     }
 
     //*********************************************
-    public static void ScanChipOfEmployee(int EmployeeID, int[] EmployeesID) {
+    public static String ScanChipOfEmployee(int EmployeeID, int[] EmployeesID) {
 
         // Check if ID is valid
         boolean vaildId = false;
@@ -325,11 +325,11 @@ public class Gym_Login_System {
         }
 
         if (vaildId) {
-            System.out.println("Welcome, The gate will open (System will record the time)");
+            return "Welcome, The gate will open (System will record the time)";
         } else {
-            System.out.println("Sorry you are not allowed to get in (Invaild EmployeeID), The gate will not open");
+            return "Sorry you are not allowed to get in (Invaild EmployeeID), The gate will not open";
         }
-        System.out.println();
+        
 
     }
     //*********************************************
