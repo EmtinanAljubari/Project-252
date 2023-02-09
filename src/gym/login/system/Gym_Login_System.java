@@ -420,9 +420,9 @@ public class Gym_Login_System {
 
         Scanner input = new Scanner(System.in);
         int ID;
-        Random rn = new Random();
-        Random m = new Random();
-        int month = m.nextInt(12);
+
+        Random randomNum = new Random();
+        int month = randomNum.nextInt(12);
         boolean vaildId = false;
         System.out.print("Enter the employee ID: ");
         do {
@@ -435,7 +435,7 @@ public class Gym_Login_System {
             }
 
             if (vaildId == true) {
-                AttendanceEmployee(ID, rn, month);
+                AttendanceEmployee(ID, randomNum, month);
 
             } else {
                 System.out.println("Invalid ID Please enter a valid ID :");
@@ -449,9 +449,9 @@ public class Gym_Login_System {
     private static void AllEmployeeReport(int[] EmployeesID) {
         System.out.println();
         System.out.println(" All Employee attendance report ");
-        Random m = new Random();
-        Random rn = new Random();
-        int month = m.nextInt(12);
+        Random randomNum = new Random();
+ 
+        int month = randomNum.nextInt(12);
         for (int i = 0; i < EmployeesID.length; i++) {
             System.out.println("- - - - - - - - - - - - - - - - - - - - - - -  ");
             System.out.println(" Employee Attendance Report ");
@@ -464,8 +464,8 @@ public class Gym_Login_System {
             System.out.println();
             for (int j = 0; j < 6; j++) {
 
-                int hour = rn.nextInt(10) + 1;
-                int minutes = rn.nextInt(60);
+                int hour = randomNum.nextInt(10) + 1;
+                int minutes = randomNum.nextInt(60);
                 System.out.println("      " + hour + ":" + minutes + "                   " + 2023 + "-" + month + "-" + j);
                 System.out.println();
             }
@@ -475,7 +475,7 @@ public class Gym_Login_System {
     }
 
     //**************************************************************
-    private static void AttendanceEmployee(int ID, Random rn, int month) {
+    private static void AttendanceEmployee(int ID, Random randomNum, int month) {
 
         System.out.println("- - - - - - - - - - - - - - - - - - - - - - -  ");
         System.out.println(" Employee Attendance Report ");
@@ -488,8 +488,8 @@ public class Gym_Login_System {
         System.out.println("");
         for (int j = 0; j < 6; j++) {
 
-            int hour = rn.nextInt(10) + 1;
-            int minutes = rn.nextInt(60);
+            int hour = randomNum.nextInt(10) + 1;
+            int minutes = randomNum.nextInt(60);
             System.out.println("      " + hour + ":" + minutes + "                   " + 2023 + "-" + month + "-" + j);
             System.out.println();
         }
