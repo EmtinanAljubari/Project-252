@@ -99,7 +99,7 @@ public class Gym_Login_System {
             System.out.println(" 1: Reserve an appointment ");
             System.out.println(" 2: Scan the chip of the Member ");
             System.out.println(" 3: Scan the chip of the Employee ");
-            System.out.println(" 4: Print report Management");
+            System.out.println(" 4: ManagementReport ");
             System.out.println(" 5: End program");
             System.out.print("Pleas enter your choice Here:");
             choice = input.nextInt();
@@ -121,7 +121,7 @@ public class Gym_Login_System {
                 System.out.println();
 
             } else if (choice == 4) {
-                PrintReportManagement();
+                 ManagementReport();
 
             } else if (choice == 5) {
                 System.exit(0);
@@ -311,7 +311,7 @@ public class Gym_Login_System {
     }
     //*********************************************
 
-    public static void PrintReportManagement() {
+    public static void ManagementReport() {
         int choice;
         boolean again = true;
 
