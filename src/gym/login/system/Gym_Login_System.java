@@ -438,7 +438,7 @@ public class Gym_Login_System {
                 AttendanceEmployee(ID, randomNum, month);
 
             } else {
-                System.out.println("Invalid ID Please enter a valid ID :");
+                System.out.print("Invalid ID Please enter a valid ID :");
 
             }
         } while (vaildId == false);
@@ -503,7 +503,7 @@ public class Gym_Login_System {
         System.out.println(" -------------------------------------------------------------------- ");
         System.out.println(" 1. Print the employee's weekly report ");
         System.out.println(" 2. Print the weekly report for all employees");
-        System.out.println(" 3. Check the employees weekly report ");
+        System.out.println(" 3. Check the employee's weekly report ");
         System.out.println(" 4. Check the weekly report for all employees ");
 
     }
