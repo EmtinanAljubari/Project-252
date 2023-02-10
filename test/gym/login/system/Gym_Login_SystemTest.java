@@ -82,12 +82,15 @@ public class Gym_Login_SystemTest {
     @Test
     public void testScanChipOfMember() {
         System.out.println("ScanChipOfMember");
-        int MemberID = 0;
-        ArrayList<Appoinment> appointments = null;
-        ArrayList<Integer> MembersID = null;
-        Gym_Login_System.ScanChipOfMember(MemberID, appointments, MembersID);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int MemberID = 110;
+        ArrayList<Appoinment> appointments = new ArrayList<>();
+        Appoinment app = new Appoinment(MemberID, 1);
+        appointments.add(app);
+        ArrayList<Integer> MembersID = new ArrayList<>();
+        MembersID.add(MemberID);
+        String expectR= "Welcome, The gate will open";
+        String result =Gym_Login_System.ScanChipOfMember(MemberID, appointments, MembersID);
+        assertSame(result, expectR);
     }
 
     /**
@@ -104,20 +107,11 @@ public class Gym_Login_SystemTest {
         assertSame(result, expectR);
     }
 
-    /**
-     * Test of PrintReportManagement method, of class Gym_Login_System.
-     */
-    @Test
-    public void testPrintReportManagement() {
-        System.out.println("PrintReportManagement");
-        Gym_Login_System.PrintReportManagement();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of DisplayTimetable method, of class Gym_Login_System.
      */
+    @Ignore
     @Test
     public void testDisplayTimetable() {
         System.out.println("DisplayTimetable");
@@ -142,6 +136,7 @@ public class Gym_Login_SystemTest {
     /**
      * Test of CheckVerificationCode method, of class Gym_Login_System.
      */
+    @Ignore
     @Test
     public void testCheckVerificationCode() {
         System.out.println("CheckVerificationCode");
@@ -150,7 +145,8 @@ public class Gym_Login_SystemTest {
         int index = 0;
         int MemberID = 0;
         int appointmentTime = 0;
-        Gym_Login_System.CheckVerificationCode(input, code, index, MemberID, appointmentTime);
+        ArrayList<Integer> MembersID=null;
+        Gym_Login_System.CheckVerificationCode(input, code, index, MemberID, appointmentTime,MembersID);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -158,6 +154,7 @@ public class Gym_Login_SystemTest {
     /**
      * Test of ReportMangmentList method, of class Gym_Login_System.
      */
+    @Ignore
     @Test
     public void testReportMangmentList() {
         System.out.println("ReportMangmentList");
@@ -166,4 +163,16 @@ public class Gym_Login_SystemTest {
         fail("The test case is a prototype.");
     }
 
+    /**
+     * Test of ManagementReport method, of class Gym_Login_System.
+     */
+    @Ignore
+    @Test
+    public void testManagementReport() {
+        System.out.println("ManagementReport");
+        Gym_Login_System.ManagementReport();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+    
 }

@@ -74,7 +74,7 @@ public class Gym_Login_System {
         // arrays that are available to reserve in Evening Time (PM)
         Member[] Appointment7 = new Member[4];
         Member[] Appointment8 = new Member[4];
-        
+
         //Member without reservation
         MembersID.add(1357);
         MembersID.add(1234);
@@ -112,16 +112,17 @@ public class Gym_Login_System {
                 System.out.println();
 
             } else if (choice == 2) {
-                ScanChipOfMember(UserID, appointments, MembersID);
+                System.out.println(ScanChipOfMember(UserID, appointments, MembersID));
                 System.out.println();
                 System.out.println();
 
             } else if (choice == 3) {
                 System.out.println(ScanChipOfEmployee(UserID, EmployeesID));
                 System.out.println();
+                System.out.println();
 
             } else if (choice == 4) {
-                 ManagementReport();
+                ManagementReport();
 
             } else if (choice == 5) {
                 System.exit(0);
@@ -248,7 +249,7 @@ public class Gym_Login_System {
     }
     //********************************************
 
-    public static void ScanChipOfMember(int MemberID, ArrayList<Appoinment> appointments, ArrayList<Integer> MembersID) {
+    public static String ScanChipOfMember(int MemberID, ArrayList<Appoinment> appointments, ArrayList<Integer> MembersID) {
 
         boolean HaveAppointment = false;
         boolean VaildId = false;
@@ -269,15 +270,14 @@ public class Gym_Login_System {
 
         }
         if (HaveAppointment) {
-            System.out.println("Welcome, The gate will open");
+            return "Welcome, The gate will open";
         } else {
 
             //Vaiald MemberID with no reservation
             for (int i = 0; i < MembersID.size(); i++) {
                 if (MemberID == MembersID.get(i)) {
-                    System.out.println("Sorry you are not allowed to get in(No reservation), The gate will not open");
                     VaildId = true;
-                    break;
+                    return "Sorry you are not allowed to get in(No reservation), The gate will not open";
 
                 }
 
@@ -285,9 +285,9 @@ public class Gym_Login_System {
         }
         //Invaiald MemberID
         if (VaildId == false) {
-            System.out.println("Sorry you are not allowed to get in (Invaild MemberID), The gate will not open");
+            return "Sorry you are not allowed to get in (Invaild MemberID), The gate will not open";
         }
-
+        return null;
     }
 
     //*********************************************
@@ -450,7 +450,7 @@ public class Gym_Login_System {
         System.out.println();
         System.out.println(" All Employee attendance report ");
         Random randomNum = new Random();
- 
+
         int month = randomNum.nextInt(12);
         for (int i = 0; i < EmployeesID.length; i++) {
             System.out.println("- - - - - - - - - - - - - - - - - - - - - - -  ");
