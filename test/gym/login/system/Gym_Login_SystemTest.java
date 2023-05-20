@@ -63,14 +63,14 @@ public class Gym_Login_SystemTest {
         System.out.println("ReserveAppointment");
         Scanner input = null;
         int MemberID = 0;
-        Member[] Appointment1 = null;
-        Member[] Appointment2 = null;
-        Member[] Appointment3 = null;
-        Member[] Appointment4 = null;
-        Member[] Appointment5 = null;
-        Member[] Appointment6 = null;
-        Member[] Appointment7 = null;
-        Member[] Appointment8 = null;
+        User[] Appointment1 = null;
+        User[] Appointment2 = null;
+        User[] Appointment3 = null;
+        User[] Appointment4 = null;
+        User[] Appointment5 = null;
+        User[] Appointment6 = null;
+        User[] Appointment7 = null;
+        User[] Appointment8 = null;
         Gym_Login_System.ReserveAppointment(input, MemberID, Appointment1, Appointment2, Appointment3, Appointment4, Appointment5, Appointment6, Appointment7, Appointment8);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -126,8 +126,8 @@ public class Gym_Login_SystemTest {
     @Test
     public void testCheckTimeAvalibalty() {
         System.out.println("CheckTimeAvalibalty");
-        Member[] x = new Member[4];
-        x[0] = new Member(400);
+        User[] x = new User[4];
+        x[0] = new User(400);
         boolean full = false;
         boolean result = Gym_Login_System.CheckTimeAvalibalty(x, full);
         assertFalse(result);

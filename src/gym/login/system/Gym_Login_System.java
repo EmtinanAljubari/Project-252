@@ -1,13 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+
 package gym.login.system;
 
-/**
- *
- * @author hindx
- */
 import java.util.*;
 
 public class Gym_Login_System {
@@ -25,9 +18,9 @@ public class Gym_Login_System {
         //-----------------------------------
         //Initialize array Here
         //Morning Time (AM)
-        Member[] Appointment1 = new Member[4];
+        User[] Appointment1 = new User[4];
         for (int i = 0; i < Appointment1.length; i++) {
-            Appointment1[i] = new Member();
+            Appointment1[i] = new User();
             int MemberId = i + 100;
             Appointment1[i].setMemberID(MemberId);
             MembersID.add(MemberId);
@@ -35,9 +28,9 @@ public class Gym_Login_System {
             appointments.add(appointment);
         }
 
-        Member[] Appointment2 = new Member[4];
+        User[] Appointment2 = new User[4];
         for (int i = 0; i < Appointment2.length; i++) {
-            Appointment2[i] = new Member();
+            Appointment2[i] = new User();
             int MemberId = i + 200;
             Appointment2[i].setMemberID(MemberId);
             MembersID.add(MemberId);
@@ -46,14 +39,14 @@ public class Gym_Login_System {
         }
 
         // arrays that are available to reserve in Morning Time (AM)
-        Member[] Appointment3 = new Member[4];
-        Member[] Appointment4 = new Member[4];
+        User[] Appointment3 = new User[4];
+        User[] Appointment4 = new User[4];
 
         //****************
         //Evening Time (PM)
-        Member[] Appointment5 = new Member[4];
+        User[] Appointment5 = new User[4];
         for (int i = 0; i < Appointment5.length; i++) {
-            Appointment5[i] = new Member();
+            Appointment5[i] = new User();
             int MemberId = i + 300;
             Appointment5[i].setMemberID(MemberId);
             MembersID.add(MemberId);
@@ -61,9 +54,9 @@ public class Gym_Login_System {
             appointments.add(appointment);
         }
 
-        Member[] Appointment6 = new Member[4];
+        User[] Appointment6 = new User[4];
         for (int i = 0; i < Appointment6.length; i++) {
-            Appointment6[i] = new Member();
+            Appointment6[i] = new User();
             int MemberId = i + 400;
             Appointment6[i].setMemberID(MemberId);
             MembersID.add(MemberId);
@@ -72,8 +65,8 @@ public class Gym_Login_System {
         }
 
         // arrays that are available to reserve in Evening Time (PM)
-        Member[] Appointment7 = new Member[4];
-        Member[] Appointment8 = new Member[4];
+        User[] Appointment7 = new User[4];
+        User[] Appointment8 = new User[4];
 
         //Member without reservation
         MembersID.add(1357);
@@ -135,9 +128,9 @@ public class Gym_Login_System {
 
     //----------------Methods of Functions----------------------
     //---------------------------------------------------------------------
-    public static void ReserveAppointment(Scanner input, int MemberID, Member[] Appointment1, Member[] Appointment2,
-            Member[] Appointment3, Member[] Appointment4, Member[] Appointment5, Member[] Appointment6, Member[] Appointment7,
-            Member[] Appointment8) {
+    public static void ReserveAppointment(Scanner input, int MemberID, User[] Appointment1, User[] Appointment2,
+            User[] Appointment3, User[] Appointment4, User[] Appointment5, User[] Appointment6, User[] Appointment7,
+            User[] Appointment8) {
 
         boolean full = true;
         do {
@@ -382,7 +375,7 @@ public class Gym_Login_System {
     }
 
     //**************************************************************************
-    public static boolean CheckTimeAvalibalty(Member x[], boolean full) {
+    public static boolean CheckTimeAvalibalty(User x[], boolean full) {
 
         for (int i = 0; i < x.length; i++) {
             if (x[i] == null) {
