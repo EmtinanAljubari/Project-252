@@ -69,6 +69,7 @@ public class Manager extends Employee{
     }
 
     
-    
-    
-}
+    public Report getReport(String ReportType){
+      if(ReportType == null){
+         return null;
+      }		 
