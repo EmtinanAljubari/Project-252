@@ -4,13 +4,12 @@
  * and open the template in the editor.
  */
 package gym.login.system;
-
 /**
  *
  * @author Rahaf
  */
 public interface Report {
-    void Disply();
-    void Print();
+    void Disply(int[] EmployeesID);
+    void Print(int[] EmployeesID);
     
 }

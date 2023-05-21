@@ -6,15 +6,18 @@
 package gym.login.system;
 
 
-public class User {
+public abstract class User {
 
     int uesrID;
     String Fname;
     String email;
     String phone;
     String address;
-    
+    protected Advertising advertising;
 
+    
+    //public abstract void update();
+     
     public User() {
 
     }
@@ -66,7 +69,11 @@ public class User {
     public void setAddress(String address) {
         this.address = address;
     }
-
+   
+    //bserver pattern
+    
+   
+    
     
 
 }

@@ -14,6 +14,7 @@ public class coach extends Employee{
     public coach(int uesrID, String Fname, String email, String phone, String address, String position, int salary) {
         super(uesrID, Fname, email, phone, address, position, salary);
     }
+    
 
     public void setPosition(String position) {
         this.position = position;

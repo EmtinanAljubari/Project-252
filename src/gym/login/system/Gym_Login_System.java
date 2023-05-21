@@ -7,7 +7,7 @@ public class Gym_Login_System {
 
     static ArrayList<Appoinment> appointments = new ArrayList<Appoinment>();
     static ArrayList<Integer> MembersID = new ArrayList<Integer>();
-    static int[] EmployeesID = new int[10];
+    public static int[] EmployeesID = new int[10];
 
     static int codeIndex = 0;
 
@@ -323,7 +323,7 @@ public class Gym_Login_System {
                         System.out.println("- - - - - - - -  -  printed successfully - - - - - - - - - - ");
                         break;
                     case 2:
-                        AllEmployeeReport(EmployeesID);
+                        AllEmployeeReport(EmployeesID);// 
                         System.out.println("- - - - - - - -  -  printed successfully - - - - - - - - - - ");
                         break;
                     case 3:
@@ -331,7 +331,7 @@ public class Gym_Login_System {
                         System.out.println("- - - -  This report is for viewing, not for print - - - -  ");
                         break;
                     case 4:
-                        AllEmployeeReport(EmployeesID);
+                        AllEmployeeReport(EmployeesID);//
                         System.out.println("- - - -   This report is for viewing, not for print - - - - ");
                         break;
                 }
@@ -409,7 +409,7 @@ public class Gym_Login_System {
     }
     //*********************************************************
 
-    private static void EmployeeReport(int[] EmployeesID) {
+    private static void EmployeeReport(int[] EmployeesID) {// only1
 
         Scanner input = new Scanner(System.in);
         int ID;
@@ -439,7 +439,7 @@ public class Gym_Login_System {
     }
     //***************************************************************
 
-    private static void AllEmployeeReport(int[] EmployeesID) {
+    private static void AllEmployeeReport(int[] EmployeesID) {//all 
         System.out.println();
         System.out.println(" All Employee attendance report ");
         Random randomNum = new Random();
@@ -467,7 +467,7 @@ public class Gym_Login_System {
 
     }
 
-    //**************************************************************
+    //**************************************************************  //only 1
     private static void AttendanceEmployee(int ID, Random randomNum, int month) {
 
         System.out.println("- - - - - - - - - - - - - - - - - - - - - - -  ");
