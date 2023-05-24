@@ -25,6 +25,9 @@ public class VIPMemberShip extends Subscriber{
         this.personalTrainer = vsubscriber.personalTrainer;
         this.nutritionalConsultation = vsubscriber.nutritionalConsultation;
     }
+
+    public VIPMemberShip() {
+    }
     
 
     @Override

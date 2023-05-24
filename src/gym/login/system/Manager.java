@@ -7,69 +7,37 @@ package gym.login.system;
 
 
 public class Manager extends Employee{
-
-    public Manager(int uesrID, String Fname, String email, String phone, String address, String position, int salary) {
+    
+    
+    String branch;
+    
+    
+    public Manager(int uesrID, String Fname, String email, String phone, String address, String position, int salary, String branch) {
         super(uesrID, Fname, email, phone, address, position, salary);
+        this.branch = branch;
     }
 
-    public String getPosition() {
-        return position;
+    public String getBranch() {
+        return branch;
     }
 
-    public int getSalary() {
-        return salary;
+    public void setBranch(String branch) {
+        this.branch = branch;
     }
+    
+    
+}
 
-    public int getUesrID() {
-        return uesrID;
-    }
 
-    public String getFname() {
-        return Fname;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setPosition(String position) {
-        this.position = position;
-    }
-
-    public void setSalary(int salary) {
-        this.salary = salary;
-    }
-
-    public void setUesrID(int uesrID) {
-        this.uesrID = uesrID;
-    }
-
-    public void setFname(String Fname) {
-        this.Fname = Fname;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
     
-    public Report getReport(String ReportType){
-      if(ReportType == null){
-         return null;
-      }		 
+    
+    
+    
+    
+    
+    
+//    public Report getReport(String ReportType){
+//      if(ReportType == null){
+//         return null;
+//      }		 

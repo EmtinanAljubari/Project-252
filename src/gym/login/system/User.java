@@ -16,7 +16,7 @@ public abstract class User {
     protected Advertising advertising;
 
     
-    //public abstract void update();
+    public abstract void update();
      
     public User() {
 

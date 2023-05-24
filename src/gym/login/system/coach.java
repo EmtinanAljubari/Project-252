@@ -11,65 +11,21 @@ package gym.login.system;
  */
 public class coach extends Employee{
     
-    public coach(int uesrID, String Fname, String email, String phone, String address, String position, int salary) {
+    int experienceYears;
+    
+    public coach(int uesrID, String Fname, String email, String phone, String address, String position, int salary,int experienceYears) {
         super(uesrID, Fname, email, phone, address, position, salary);
+        this.experienceYears = experienceYears;
+    }
+
+    public int getExperienceYears() {
+        return experienceYears;
+    }
+
+    public void setExperienceYears(int experienceYears) {
+        this.experienceYears = experienceYears;
     }
     
 
-    public void setPosition(String position) {
-        this.position = position;
-    }
-
-    public void setSalary(int salary) {
-        this.salary = salary;
-    }
-
-    public void setUesrID(int uesrID) {
-        this.uesrID = uesrID;
-    }
-
-    public void setFname(String Fname) {
-        this.Fname = Fname;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPosition() {
-        return position;
-    }
-
-    public int getSalary() {
-        return salary;
-    }
-
-    public int getUesrID() {
-        return uesrID;
-    }
-
-    public String getFname() {
-        return Fname;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public String getAddress() {
-        return address;
-    }
     
 }

@@ -10,6 +10,16 @@ public abstract class Employee extends User{
         this.position = position;
         this.salary = salary;
     }
+    
+    public Employee (Advertising ad){
+        this.advertising = ad;
+        this.advertising.attach(this);
+    }
+    
+    @Override
+    public void update() {
+        System.out.println("Employee: " + advertising.getState());
+    }
 
 
     public String getPosition() {
