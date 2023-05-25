@@ -1,5 +1,6 @@
 package gym.login.system;
 
+import static gym.login.system.Gym_Login_System.codeIndex;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -8,40 +9,45 @@ public abstract class Subscriber extends User{
     private String TypeOfMemberShip;
     private String startingDate;
     private String ExpiryDate;
-    protected boolean state;//if it is ture mean its state is avaliable membership
+    protected boolean membershipState;//if it is ture mean its state is avaliable membership
     
-    //public Advertising advertising;
-    //private ArrayList <Subscriber> sub = new ArrayList<Subscriber>();
+    
 
-    abstract void checkMembership(Subscriber s);
-    abstract void DisplayTimetable();
-    abstract boolean CheckTimeAvalibalty(User x[], boolean full);
-    abstract void CheckVerificationCode(Scanner input, int code[], int index, int MemberID, int appointmentTime, ArrayList<Integer> MembersID);
+    
+    abstract User[] DisplayTimetable(Scanner input,User[] Appointment1, User[] Appointment2,
+            User[] Appointment3, User[] Appointment4, User[] Appointment5, User[] Appointment6, User[] Appointment7,
+            User[] Appointment8);
+    abstract boolean CheckTimeAvalibalty(User[] appArray);
+    abstract void CheckVerificationCode(Scanner input, boolean full,int code[], int codeIndex, int MemberID,ArrayList<Appoinment> appointments, ArrayList<Integer> MembersID);
     
     
     
     //template method
-    public final void ReservationSteps(Scanner input, int MemberID, User[] Appointment1, User[] Appointment2,
+    public  final void ReservationSteps(Scanner input, int MemberID, User[] Appointment1, User[] Appointment2,
             User[] Appointment3, User[] Appointment4, User[] Appointment5, User[] Appointment6, User[] Appointment7,
-            User[] Appointment8,User[]x,  boolean full, int []code, int index, int appointmentTime, ArrayList<Integer> MembersID){
-        checkMembership(this);
-        DisplayTimetable();
-        CheckTimeAvalibalty(x,  full);
-        CheckVerificationCode(input, code, index, MemberID, appointmentTime, MembersID);
+            User[] Appointment8 ,int []code, int codeIndex,ArrayList<Appoinment> appointments ,ArrayList<Integer> MembersID){
+        
+        //step1
+        User[] appArray = DisplayTimetable(input,Appointment1, Appointment2,
+             Appointment3,  Appointment4, Appointment5, Appointment6, Appointment7,
+             Appointment8);
+        
+        //step2
+        boolean AppointmentAvaliablity = CheckTimeAvalibalty(appArray);
+        
+        //step3
+        CheckVerificationCode(input, AppointmentAvaliablity,code, codeIndex, MemberID,appointments, MembersID);
     }
     
     
-    public Subscriber(Advertising ad){
-        this.advertising = ad;
-        this.advertising.attach(this);
-    } 
+    
                 
     public Subscriber( int uesrID, String Fname, String email, String phone, String address, String TypeOfMemberShip, String startingDate, String ExpiryDate, boolean state) {
         super(uesrID, Fname, email, phone, address);
         this.TypeOfMemberShip = TypeOfMemberShip;
         this.startingDate = startingDate;
         this.ExpiryDate = ExpiryDate;
-        this.state=state;
+        this.membershipState=state;
     }
 
     protected Subscriber(Subscriber subscriber) {
@@ -53,21 +59,49 @@ public abstract class Subscriber extends User{
         this.TypeOfMemberShip = subscriber.TypeOfMemberShip;
         this.startingDate = subscriber.startingDate;
         this.ExpiryDate = subscriber.ExpiryDate;
-        this.state=subscriber.state;
+        this.membershipState=subscriber.membershipState;
     }
 
     public Subscriber() {
     }
-    
-    
-    
+    ////////////////
+        
+    public String ScanChipOfMember(int MemberID, ArrayList<Appoinment> appointments, ArrayList<Integer> MembersID) {
+        boolean HaveAppointment = false;
+        boolean ValidId = false;
 
-    @Override
-    public void update() {
-        System.out.println("Subscriber: " + advertising.getState());
+        //Valid MemberID with reservation
+        for (int i = 0; i < MembersID.size(); i++) {
+            if (MemberID == MembersID.get(i)) {
+                for (int j = 0; j < appointments.size(); j++) {
+                    if (MemberID == appointments.get(j).getUserId()) {
+                        HaveAppointment = true;
+                        ValidId = true;
+                        break;
+                    }
+                }
+            }
+        }
+
+        if (HaveAppointment) {
+            return "Welcome, The gate will open";
+        } else {
+            //Valid MemberID with no reservation
+            for (int i = 0; i < MembersID.size(); i++) {
+                if (MemberID == MembersID.get(i)) {
+                    ValidId = true;
+                    return "Sorry you are not allowed to get in (No reservation), The gate will not open";
+                }
+            }
+        }
+        //Invalid MemberID
+        if (ValidId == false) {
+            return "Sorry you are not allowed to get in (Invalid MemberID), The gate will not open";
+        }
+        return null;
     }
-    
-    
+
+       
     
     public abstract Subscriber clone();
     
@@ -97,11 +131,11 @@ public abstract class Subscriber extends User{
     }
 
     public boolean isState() {
-        return state;
+        return membershipState;
     }
 
     public void setState(boolean state) {
-        this.state = state;
+        this.membershipState = state;
     }
     
     

@@ -6,24 +6,27 @@
 package gym.login.system;
 
 
-public class Manager extends Employee{
+public class Manager extends Employee{ // Singletone design pattern
     
+    private static Manager instance = null;
+  
     
-    String branch;
+    private Manager() {
+        super();
+    }
     
-    
-    public Manager(int uesrID, String Fname, String email, String phone, String address, String position, int salary, String branch) {
-        super(uesrID, Fname, email, phone, address, position, salary);
-        this.branch = branch;
+    public static Manager getInstance(){
+        if(instance == null){
+            instance = new Manager();
+            instance.uesrID = 2020;
+            instance.Fname = "Hatem Aljubari";
+            instance.email = "Hatem@gmail.com";
+  
+        }
+        return instance;
     }
 
-    public String getBranch() {
-        return branch;
-    }
-
-    public void setBranch(String branch) {
-        this.branch = branch;
-    }
+   
     
     
 }

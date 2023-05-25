@@ -18,6 +18,9 @@ public class Appoinment {
         this.UserId = UserId;
         this.appointmentTime = appointmentTime;
     }
+    public Appoinment (int UserId){
+        this.UserId = UserId;
+    }
 
     public int getUserId() {
         return UserId;

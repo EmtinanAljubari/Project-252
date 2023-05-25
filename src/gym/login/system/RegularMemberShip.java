@@ -1,6 +1,7 @@
 
 package gym.login.system;
 
+import static gym.login.system.Gym_Login_System.codeIndex;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -30,36 +31,115 @@ public class RegularMemberShip extends Subscriber{
     public RegularMemberShip clone() {
          
              RegularMemberShip r = new RegularMemberShip(this);
-             r.setState(true);//renew the membership
              return r;
          
          
     }
 
+
     @Override
-    void checkMembership(Subscriber s) {
-        if( s.isState() == false){//if unavaliable membership
-            s.clone();
-        System.out.println("Your membership renewed successfully!");
-        }else                   //if avaliable membership
-            System.out.println("Your membership still avaliable!");
+    User[] DisplayTimetable(Scanner input,User[] Appointment1, User[] Appointment2,
+            User[] Appointment3, User[] Appointment4, User[] Appointment5, User[] Appointment6, User[] Appointment7,
+            User[] Appointment8) {
+        System.out.println(" -------------------------------------------------------------------- ");
+        System.out.println("             Welcome, This is the Timetable for the gym:               ");
+        System.out.println(" ______________________________________________________________________");
+        System.out.println("                            Morning Time (AM)                          ");
+        System.out.println(" _______________________________________________________________________");
+        System.out.println(" Appointment Number      Branch        Day       Date        Time      ");
+        System.out.println("________________________________________________________________________");
+        System.out.println("          1:             AL-SAFA      Sunday   01-1-2023   07:00-09:00  ");
+        System.out.println("          2:             AL-REHAB     Monday   02-1-2023   08:00-09:00  ");
+        System.out.println("          3:             AL-BAWADI    Sunday   01-1-2023   07:00-09:00  ");
+        System.out.println("          4:             AL-SAFA      Sunday   01-1-2023   09:00-11:00  ");
+        System.out.println("________________________________________________________________________");
+        System.out.println("                            Evening Time (PM)                          ");
+        System.out.println(" _______________________________________________________________________");
+        System.out.println(" Appointment Number      Branch        Day       Date        Time      ");
+        System.out.println("________________________________________________________________________");
+        System.out.println("          5:             AL-SAFA      Sunday   01-1-2023   12:00-02:00  ");
+        System.out.println("          6:             AL-REHAB     Monday   02-1-2023   08:00-10:00  ");
+        System.out.println("          7:             AL-BAWADI    Sunday   01-1-2023   07:00-09:00  ");
+        System.out.println("          8:             AL-SAFA      Sunday   01-1-2023   10:00-11:00  ");
+        System.out.println("________________________________________________________________________");
+        System.out.println();
+        System.out.print("  Enter The appointment Number: ");
+        int AP_Number = input.nextInt();
+        switch(AP_Number){
+            case 1:
+                return Appointment1;
+                
+            case 2:
+                return Appointment2;
+                
+            case 3:
+                return Appointment3;
+                
+            case 4:
+                return Appointment4;
+                
+            case 5:
+                return Appointment5;
+                
+                
+            case 6:
+                return Appointment6;
+                
+                
+            case 7:
+                return Appointment7;
+                
+                
+            case 8:
+                return Appointment8;
+                
+            default:
+                return null;
+        }
         
     }
 
     @Override
-    void DisplayTimetable() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    boolean CheckTimeAvalibalty(User[] appArray) {
+       boolean AppointmentAvaliablity =false;
+        
+        for (int i = 0; i < appArray.length; i++) {
+            if (appArray[i] == null) {
+                AppointmentAvaliablity = true;
+            }
+        }
+        return AppointmentAvaliablity;
     }
+    
+    
+    @Override
+    void CheckVerificationCode(Scanner input, boolean AppointmentAvaliablity,int code[], int codeIndex,int MemberID,ArrayList<Appoinment> appointments , ArrayList<Integer> MembersID) {
+        if (AppointmentAvaliablity == false) {
+            System.out.println("Sorry, this time is unavalibale! Please select another time");
+        } else {
+            System.out.println("Great, this time is avalibale");
+        
+ 
+        int enteredCode;
+        do {
+            System.out.print("Please Enter the verification code: ");
+            enteredCode = input.nextInt();
 
-    @Override
-    boolean CheckTimeAvalibalty(User[] x, boolean full) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            //Check Verification Code
+            if (code[codeIndex] == enteredCode) {
+                Appoinment appointment = new Appoinment(MemberID);
+                appointments.add(appointment);
+                MembersID.add(MemberID);
+                System.out.println("Appointment has been successfully booked. Have a nice day! ");
+                codeIndex++;
+                break;
+            } else {
+                System.out.println("Incorrect code try again!");
+                System.out.println();
+            }
+
+        } while (code[codeIndex] != enteredCode);
     }
-    
-    
-    @Override
-    void CheckVerificationCode(Scanner input, int[] code, int index, int MemberID, int appointmentTime, ArrayList<Integer> MembersID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

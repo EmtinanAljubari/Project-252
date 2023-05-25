@@ -8,13 +8,14 @@ public class Gym_Login_System {
     public static ArrayList<Appoinment> appointments = new ArrayList<Appoinment>();
     public static ArrayList<Integer> subscribersID = new ArrayList<Integer>();
     public static int[] EmployeesID = new int[10];
-    public final static int managerId= 2020;
-
+    
+    public static Manager mng = Manager.getInstance();
+    public static int managerID = mng.getUesrID();
+    
     static int codeIndex = 0;
 
     public static void main(String[] args) {
-        //--------------------------------
-        //-----------------------------------
+
         //Morning Time (AM)
         //Reservation array that is full
         //object from regular membership
@@ -83,10 +84,52 @@ public class Gym_Login_System {
             EmployeesID[i] = i + 1000;
         }
         //**********************************************************
+
+        //Start point of system implemention 
         Scanner input = new Scanner(System.in);
         System.out.print("Pleas enter your User ID: ");
         int UserID = input.nextInt();
 
+        //--------------------------------
+        //-----------------------------------
+        //Prototype Pattern
+        Scanner in = new Scanner(System.in);
+        ArrayList<Subscriber> subscribersID2 = new ArrayList<>();//ArrayList to test  membership state
+        subscribersID2.add(new RegularMemberShip(22, "Ahmed", "hh@.com", "054", "Jeddah", "Regular", "14Apr2020", "14Dec2020", true));
+        subscribersID2.add(new RegularMemberShip(23, "Tariq", "h@.com", "055", "Jeddah", "Regular", "20Apr2020", "20Dec2020", false));
+
+        subscribersID.add(22);
+        subscribersID.add(23);
+
+        boolean membershipState = true;
+        int subIndex = 0;
+        //loop to check the state of membership
+        for (int i = 0; i < subscribersID2.size(); i++) {
+            if (UserID == subscribersID2.get(i).uesrID) {
+
+                if (subscribersID2.get(i).isState() == false) {
+                    membershipState = false;
+                    subIndex = i;
+                }
+            }
+        }
+        if (membershipState) {
+            System.out.println("Your membership still avaliable!");
+        } else {
+            System.out.println(" Your Membership expired, Do you want to renew it? " + "\n" + "Enter Yes or No");
+            String Choice = in.next();
+            if (Choice.equalsIgnoreCase("Yes")) {
+                subscribersID2.add(subscribersID2.get(subIndex).clone());
+                subscribersID2.get(subscribersID2.size() - 1).setState(true);
+                System.out.println("Your membership renewed successfully!");
+            } else {
+                System.out.println("You are not authorized to access due to expired membership");
+                System.exit(0);
+            }
+        }
+        // End of Prototype
+
+        //Menu of the system
         int choice;
         System.out.println();
         do {
@@ -98,20 +141,34 @@ public class Gym_Login_System {
             System.out.println(" 2: Scan the chip of the Member ");
             System.out.println(" 3: Scan the chip of the Employee ");
             System.out.println(" 4: ManagementReport ");
-            System.out.println(" 5: End program");
+            System.out.println(" 5: Manager Information ");
+            System.out.println(" 6: End program");
             System.out.print("Pleas enter your choice Here:");
             choice = input.nextInt();
             System.out.println();
 
             //--------call method depending on choice-------------
-            if (choice == 1) { //patterns (templet +prototype)
-                ReserveAppointment(input, UserID, Appointment1, Appointment2,
+            if (choice == 1) { //patterns (templet)
+
+                //array for vaild Verification Codes
+                int[] code = {1046, 1174, 5252, 7896, 1294, 6076, 4343, 8854, 1020, 8550};
+
+                Subscriber s = new RegularMemberShip();
+                s.setUesrID(UserID);
+
+                //Calling templet method
+                s.ReservationSteps(input, UserID, Appointment1, Appointment2,
                         Appointment3, Appointment4, Appointment5, Appointment6,
-                        Appointment7, Appointment8);
+                        Appointment7, Appointment8, code, codeIndex, appointments, subscribersID);
+                //End of the templet method
                 System.out.println();
 
             } else if (choice == 2) {//pattern proxy
+
+                Gate subscriber = new SubscriberProxy(UserID, subscribersID, appointments);
+                subscriber.ScanChipOfMember(UserID, appointments, subscribersID);
                 System.out.println(ScanChipOfMember(UserID, appointments, subscribersID));
+
                 System.out.println();
                 System.out.println();
 
@@ -120,35 +177,35 @@ public class Gym_Login_System {
                 System.out.println();
                 System.out.println();
 
-            } else if (choice == 4) {// factory design pattern (done)
-                ManagementReport(UserID);
+            } else if (choice == 4) {// factory design pattern
+                ManagementReport(managerID);
+                System.out.println();
 
-            } else if (choice == 5) {
+            } else if (choice == 5) {// Singletone design pattern
+                
+                System.out.println("Manager Name: "+mng.getFname());
+                System.out.println("Manager Email: "+ mng.getEmail());
+                System.out.println();
+
+                
+            }else if (choice == 6) {
                 System.exit(0);
             }
 
             //End of the main 
-        } while (choice != 5);
+        } while (choice != 6);
 
     }
 
     //----------------Methods of Functions----------------------
     //---------------------------------------------------------------------
-    public static void ReserveAppointment(Scanner input, int MemberID, User[] Appointment1, User[] Appointment2,
-            User[] Appointment3, User[] Appointment4, User[] Appointment5, User[] Appointment6, User[] Appointment7,
-            User[] Appointment8) {
-
-        boolean full = true;
-        do {
-//            DisplayTimetable();
-            int AP_Number = input.nextInt();
-            int[] code = {1046, 1174, 5252, 7896, 1294, 6076, 4343, 8854, 1020, 8550};
-
-            switch (AP_Number) {
-
+    //public static void ReserveAppointment(Scanner input, int MemberID, User[] Appointment1, User[] Appointment2,
+    //   User[] Appointment3, User[] Appointment4, User[] Appointment5, User[] Appointment6, User[] Appointment7,
+    //  User[] Appointment8) {
+    //switch (AP_Number) {
 //                case 1:
 //
-//                    //Check Time Avalibality
+//                       //Check Time Avalibality
 ////                    full = CheckTimeAvalibalty(Appointment1, full);
 ////                    if (full) {
 ////                        System.out.println("Sorry, this time is unavalibale! Please select another time");
@@ -245,11 +302,8 @@ public class Gym_Login_System {
 //                    break;
 //            }
 //        } while (full);
-    }
-        }
-        }
+    //}
     //********************************************
-
     public static String ScanChipOfMember(int MemberID, ArrayList<Appoinment> appointments, ArrayList<Integer> MembersID) {
 
         boolean HaveAppointment = false;
@@ -312,138 +366,123 @@ public class Gym_Login_System {
     }
     //*********************************************
 
-    public static void ManagementReport(int UserID) {//Factory Pattern
+    public static void ManagementReport(int managerID) {//Factory Pattern
         int choice;
         boolean again = true;
-        if(UserID == 2020){
-        Scanner input = new Scanner(System.in);
-        ReportMangmentList();
-        System.out.print("Pleas enter your choice Here:");
-        choice = input.nextInt();
-        ReportFactory reportFactory = new ReportFactory();
+        if (managerID == 2020) {
+            Scanner input = new Scanner(System.in);
+            ReportMangmentList();
+            System.out.print("Pleas enter your choice Here:");
+            choice = input.nextInt();
+            ReportFactory reportFactory = new ReportFactory();
 
-        while (again) {
-            if (1 <= choice && choice <= 6) {
+            while (again) {
+                if (1 <= choice && choice <= 6) {
 
-                switch (choice) {
+                    switch (choice) {
 
-                    case 1:
-                        
-                        Report r = reportFactory.getReport("Daily");
-                        r.Disply(EmployeesID);
-                        
-                        break;
-                    case 2:
-                        Report r2 = reportFactory.getReport("Monthly");
-                        r2.Disply(EmployeesID);
-                        
-                        break;
-                    case 3:
-                        Report r3 = reportFactory.getReport("Yearly");
-                        r3.Disply(EmployeesID);
-                        
-                        break;
-                    case 4:
-                        Report r4 = reportFactory.getReport("Daily");
-                        r4.Print(EmployeesID);
-                        
-                        break;
-                    case 5:
-                        Report r5 = reportFactory.getReport("Monthly");
-                        r5.Print(EmployeesID);
-                        
-                        break;
-                    case 6:
-                        Report r6 = reportFactory.getReport("Yearly");
-                        r6.Print(EmployeesID);
-                        
-                        break;
+                        case 1:
+
+                            Report r = reportFactory.getReport("Daily");
+                            r.Disply(EmployeesID);
+
+                            break;
+                        case 2:
+                            Report r2 = reportFactory.getReport("Monthly");
+                            r2.Disply(EmployeesID);
+
+                            break;
+                        case 3:
+                            Report r3 = reportFactory.getReport("Yearly");
+                            r3.Disply(EmployeesID);
+
+                            break;
+                        case 4:
+                            Report r4 = reportFactory.getReport("Daily");
+                            r4.Print(EmployeesID);
+
+                            break;
+                        case 5:
+                            Report r5 = reportFactory.getReport("Monthly");
+                            r5.Print(EmployeesID);
+
+                            break;
+                        case 6:
+                            Report r6 = reportFactory.getReport("Yearly");
+                            r6.Print(EmployeesID);
+
+                            break;
+                    }
+
+                    System.out.println();
+                    again = false;
+                } else {
+                    System.out.print("Invalid choice try again: ");
+                    choice = input.nextInt();
                 }
 
-                System.out.println();
-                again = false;
-            } else {
-                System.out.print("Invalid choice try again: ");
-                choice = input.nextInt();
             }
-
-        }
-    }else{
+        } else {
             System.out.println("The given ID is not allowed to access management reports!");
         }
     }
 
     //----------------------------------------------------------
     //----------------Methods of Functions----------------------
-    public static void DisplayTimetable() {
-
-        System.out.println(" -------------------------------------------------------------------- ");
-        System.out.println("             Welcome, This is the Timetable for the gym:               ");
-        System.out.println(" ______________________________________________________________________");
-        System.out.println("                            Morning Time (AM)                          ");
-        System.out.println(" _______________________________________________________________________");
-        System.out.println(" Appointment Number      Branch        Day       Date        Time      ");
-        System.out.println("________________________________________________________________________");
-        System.out.println("          1:             AL-SAFA      Sunday   01-1-2023   07:00-09:00  ");
-        System.out.println("          2:             AL-REHAB     Monday   02-1-2023   08:00-09:00  ");
-        System.out.println("          3:             AL-BAWADI    Sunday   01-1-2023   07:00-09:00  ");
-        System.out.println("          4:             AL-SAFA      Sunday   01-1-2023   09:00-11:00  ");
-        System.out.println("________________________________________________________________________");
-        System.out.println("                            Evening Time (PM)                          ");
-        System.out.println(" _______________________________________________________________________");
-        System.out.println(" Appointment Number      Branch        Day       Date        Time      ");
-        System.out.println("________________________________________________________________________");
-        System.out.println("          5:             AL-SAFA      Sunday   01-1-2023   12:00-02:00  ");
-        System.out.println("          6:             AL-REHAB     Monday   02-1-2023   08:00-10:00  ");
-        System.out.println("          7:             AL-BAWADI    Sunday   01-1-2023   07:00-09:00  ");
-        System.out.println("          8:             AL-SAFA      Sunday   01-1-2023   10:00-11:00  ");
-        System.out.println("________________________________________________________________________");
-        System.out.println();
-        System.out.print("  Enter The appointment Number: ");
-    }
-
+//    public static int DisplayTimetable(Scanner input) {
+//
+//        
+//    }
     //**************************************************************************
-    public static boolean CheckTimeAvalibalty(User x[], boolean full) {
-       
+    public static boolean CheckTimeAvalibalty(User x[]) {
+
+        boolean full = true;
+
         for (int i = 0; i < x.length; i++) {
             if (x[i] == null) {
                 full = false;
             }
         }
-        if (full) {
-            System.out.println("Sorry, this time is unavalibale! Please select another time");
-        } else {
-            System.out.println("Great, this time is avalibale");
-        }
+//        if (full) {
+//            System.out.println("Sorry, this time is unavalibale! Please select another time");
+//        } else {
+//            System.out.println("Great, this time is avalibale");
+//        }
 
         return full;
 
     }
 
     //***************************************************************************
-    public static void CheckVerificationCode(Scanner input, int code[], int index, int MemberID, int appointmentTime, ArrayList<Integer> MembersID) {
-        int enteredCode;
-        do {
-            System.out.print("Please Enter the verification code: ");
-            enteredCode = input.nextInt();
+    public static void CheckVerificationCode(Scanner input, boolean AppointmentAvaliablity, int code[], int index, int MemberID, ArrayList<Integer> MembersIDWithApp) {
 
-            //Check Verification Code
-            if (code[codeIndex] == enteredCode) {
-                Appoinment appointment = new Appoinment(MemberID, appointmentTime);
-                appointments.add(appointment);
-                MembersID.add(MemberID);
-                System.out.println("Appointment has been successfully booked. Have a nice day! ");
-                codeIndex++;
-                break;
-            } else {
-                System.out.println("Incorrect code try again!");
-                System.out.println();
-            }
+        if (AppointmentAvaliablity == false) {
+            System.out.println("Sorry, this time is unavalibale! Please select another time");
+        } else {
+            System.out.println("Great, this time is avalibale");
 
-        } while (code[codeIndex] != enteredCode);
+            int enteredCode;
+            do {
+                System.out.print("Please Enter the verification code: ");
+                enteredCode = input.nextInt();
+
+                //Check Verification Code
+                if (code[codeIndex] == enteredCode) {
+                    Appoinment appointment = new Appoinment(MemberID);
+                    appointments.add(appointment);
+                    MembersIDWithApp.add(MemberID);
+                    System.out.println("Appointment has been successfully booked. Have a nice day! ");
+                    codeIndex++;
+                    break;
+                } else {
+                    System.out.println("Incorrect code try again!");
+                    System.out.println();
+                }
+
+            } while (code[codeIndex] != enteredCode);
+        }
     }
     //*********************************************************
-
 
     public static void ReportMangmentList() {
         System.out.println(" -------------------------------------------------------------------- ");
