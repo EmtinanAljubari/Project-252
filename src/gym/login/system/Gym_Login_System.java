@@ -102,30 +102,44 @@ public class Gym_Login_System {
         subscribersID.add(23);
 
         boolean membershipState = true;
+        boolean ValidID = false; 
         int subIndex = 0;
         //loop to check the state of membership
-        for (int i = 0; i < subscribersID2.size(); i++) {
-            if (UserID == subscribersID2.get(i).uesrID) {
+        for (int j = 0; j < subscribersID.size(); j++) {
+            if (UserID == subscribersID.get(j)) {
+                ValidID = true;
+                for (int i = 0; i < subscribersID2.size(); i++) {
+                    if (UserID == subscribersID2.get(i).uesrID) {
 
-                if (subscribersID2.get(i).isState() == false) {
-                    membershipState = false;
-                    subIndex = i;
-                }
-            }
+                        if (subscribersID2.get(i).isState() == false) {
+                            membershipState = false;
+                            subIndex = i;
+                        }}
+                }}
         }
-        if (membershipState) {
+
+        if (membershipState == true && ValidID == true) {//Avaliable membership
             System.out.println("Your membership still avaliable!");
-        } else {
+        
+        
+        } else if(membershipState == false && ValidID == true){//Unavaliable membership
             System.out.println(" Your Membership expired, Do you want to renew it? " + "\n" + "Enter Yes or No");
             String Choice = in.next();
+            
             if (Choice.equalsIgnoreCase("Yes")) {
-                subscribersID2.add(subscribersID2.get(subIndex).clone());
-                subscribersID2.get(subscribersID2.size() - 1).setState(true);
+                subscribersID2.add(subscribersID2.get(subIndex).clone());//Clone Method
+                subscribersID2.get(subscribersID2.size() - 1).setState(true);//Update Membership
                 System.out.println("Your membership renewed successfully!");
+            
+            
             } else {
                 System.out.println("You are not authorized to access due to expired membership");
                 System.exit(0);
             }
+        
+        
+        }else if(membershipState == false && ValidID == false){
+            System.out.println("Invalid Member ID!");
         }
         // End of Prototype
 
@@ -140,14 +154,17 @@ public class Gym_Login_System {
             System.out.println(" 1: Reserve an appointment ");
             System.out.println(" 2: Scan the chip of the Member ");
             System.out.println(" 3: Scan the chip of the Employee ");
-            System.out.println(" 4: ManagementReport ");
+            System.out.println(" 4: Management Report ");
             System.out.println(" 5: Manager Information ");
             System.out.println(" 6: End program");
             System.out.print("Pleas enter your choice Here:");
             choice = input.nextInt();
             System.out.println();
 
+            
             //--------call method depending on choice-------------
+            
+            
             if (choice == 1) { //patterns (templet)
 
                 //array for vaild Verification Codes
@@ -178,7 +195,7 @@ public class Gym_Login_System {
                 System.out.println();
 
             } else if (choice == 4) {// factory design pattern
-                ManagementReport(managerID);
+                ManagementReport(UserID);
                 System.out.println();
 
             } else if (choice == 5) {// Singletone design pattern
@@ -231,10 +248,10 @@ public class Gym_Login_System {
     }
 
     //*********************************************************
-    public static void ManagementReport(int managerID) {//Factory Pattern
+    public static void ManagementReport(int UserID) {//Factory Pattern
         int choice;
         boolean again = true;
-        if (managerID == 2020) {
+        if (UserID == manager.uesrID) {
             Scanner input = new Scanner(System.in);
             ReportMangmentList();
             System.out.print("Pleas enter your choice Here:");

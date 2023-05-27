@@ -41,8 +41,9 @@ public class YearlyReport implements Report {
 
                 int hour = randomNum.nextInt(10) + 1;
                 int minutes = randomNum.nextInt(60);
-                int month = randomNum.nextInt(12);
-                System.out.println("      " + hour + ":" + minutes + "                   " + year + "-" + month + "-" + j);
+                int month = randomNum.nextInt(11)+1;
+                int day = randomNum.nextInt(30) + 1;
+                System.out.println("      " + hour + ":" + minutes + "                   " + year + "-" + month + "-" + day);
                 System.out.println();
             }
 
@@ -60,7 +61,7 @@ public class YearlyReport implements Report {
         System.out.println(" All Employee attendance report ");
         Random randomNum = new Random();
 
-        int month = randomNum.nextInt(12);
+        
         for (int i = 0; i < EmployeesID.length; i++) {
             System.out.println("- - - - - - - - - - - - - - - - - - - - - - -  ");
             System.out.println(" Employee Attendance Report ");
@@ -75,7 +76,9 @@ public class YearlyReport implements Report {
 
                 int hour = randomNum.nextInt(10) + 1;
                 int minutes = randomNum.nextInt(60);
-                System.out.println("      " + hour + ":" + minutes + "                   " + 2023 + "-" + month + "-" + j);
+                int month = randomNum.nextInt(11)+1;
+                int day = randomNum.nextInt(30) + 1;
+                System.out.println("      " + hour + ":" + minutes + "                   " + 2023 + "-" + month + "-" + day);
                 System.out.println();
                 
             }

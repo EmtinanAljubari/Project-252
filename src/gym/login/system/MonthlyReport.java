@@ -39,7 +39,8 @@ public class MonthlyReport implements Report {
 
                 int hour = randomNum.nextInt(10) + 1;
                 int minutes = randomNum.nextInt(60);
-                System.out.println("      " + hour + ":" + minutes + "                   " + 2023 + "-" + month + "-" + j);
+                int day = randomNum.nextInt(30) + 1;
+                System.out.println("      " + hour + ":" + minutes + "                   " + 2023 + "-" + month + "-" + day);
                 System.out.println();
             }
 
@@ -70,7 +71,8 @@ public class MonthlyReport implements Report {
 
                 int hour = randomNum.nextInt(10) + 1;
                 int minutes = randomNum.nextInt(60);
-                System.out.println("      " + hour + ":" + minutes + "                   " + 2023 + "-" + month + "-" + j);
+                int day = randomNum.nextInt(30) + 1;
+                System.out.println("      " + hour + ":" + minutes + "                   " + 2023 + "-" + month + "-" + day);
                 System.out.println();
                 
             }
