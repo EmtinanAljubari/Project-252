@@ -1,6 +1,6 @@
 package gym.login.system;
 
-public abstract class Employee extends User {
+public class Employee extends User {
 
     String position;
     int salary;

@@ -15,10 +15,10 @@ import java.util.Scanner;
  */
 public class VIPMemberShip extends Subscriber{
 
-    coach personalTrainer;
+    String personalTrainer;
     String nutritionalConsultation;
 
-    public VIPMemberShip(coach personalTrainer, String nutritionalConsultation, int uesrID, String Fname, String email, String phone, String address, String TypeOfMemberShip, String startingDate, String ExpiryDate, boolean state) {
+    public VIPMemberShip( int uesrID, String Fname, String email, String phone, String address, String TypeOfMemberShip, String startingDate, String ExpiryDate, boolean state,String personalTrainer, String nutritionalConsultation) {
         super(uesrID, Fname, email, phone, address, TypeOfMemberShip, startingDate, ExpiryDate, state);
         this.personalTrainer = personalTrainer;
         this.nutritionalConsultation = nutritionalConsultation;
