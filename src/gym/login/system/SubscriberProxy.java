@@ -27,17 +27,13 @@ public class SubscriberProxy implements Gate {
             subscriber = new RegularMemberShip();
         }
 
-        if (subscribersID.contains(memberId)) {
+        if (subscribersID.contains(memberId)) {//valid MemberID
 
             return subscriber.ScanChipOfMember(MemberID, appointments, MembersID);
 
-        } else {
+        } else {//Invalid MemberID
             return "Sorry you are not allowed to get in (Invalid Member ID), The gate will not open";
         }
     }
-//
-//    @Override
-//    public String OpenGate(int MemberID, ArrayList<Appoinment> appointments, ArrayList<Integer> MembersID) {
-//    }
 
 }

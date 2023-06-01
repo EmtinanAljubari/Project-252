@@ -14,6 +14,16 @@ import java.util.Scanner;
  */
 public class YearlyReport implements Report {
 
+    public static String year;
+
+    public static String getYear() {
+        return year;
+    }
+
+    public static void setYear(String year) {
+        YearlyReport.year = year;
+    }
+    
       @Override
     public void Disply(int[] EmployeesID) {
         System.out.println();

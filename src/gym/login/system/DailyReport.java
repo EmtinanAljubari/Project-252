@@ -7,6 +7,8 @@ package gym.login.system;
 
 import java.util.Random;
 import java.util.Scanner;
+import gym.login.system.ManagmentReport3;
+
 
 /**
  *
@@ -14,6 +16,38 @@ import java.util.Scanner;
  */
 public class DailyReport implements Report {
 
+    public static String day;
+    public static String month;
+    public static String year;
+    
+
+    public static String getDay() {
+        return day;
+    }
+
+    public static String getMonth() {
+        return month;
+    }
+
+    public static void setDay(String day) {
+        DailyReport.day = day;
+    }
+
+    public static void setMonth(String month) {
+        DailyReport.month = month;
+    }
+
+    public static String getYear() {
+        return year;
+    }
+
+    public static void setYear(String year) {
+        DailyReport.year = year;
+    }
+    
+    
+    
+   
     @Override
     public void Disply(int[] EmployeesID) {
         System.out.println();
@@ -21,13 +55,17 @@ public class DailyReport implements Report {
         Random randomNum = new Random();
         Scanner in = new Scanner (System.in);
         System.out.println("Enter day number: ");
-        int day = in.nextInt();
+        day = in.next();
+        
         
         
         System.out.println("Enter month number: ");
-        int month = in.nextInt();
+        month = in.next();
+        System.out.println("Enter year number: ");
+        year = in.next();
         
         for (int i = 0; i < EmployeesID.length; i++) {
+           
             System.out.println("- - - - - - - - - - - - - - - - - - - - - - -  ");
             System.out.println(" Employee Attendance Report ");
             System.out.println("- - - - - - - - - - - - - - - - - - - - - - -  ");
@@ -37,13 +75,13 @@ public class DailyReport implements Report {
             System.out.println("Time Attendance :             Date: ");
             System.out.println("- - - - - - - - - - - - - - - - - - - - - - -  ");
             System.out.println();
-            //for (int j = 0; j < 6; j++) {
+            
 
                 int hour = randomNum.nextInt(10) + 1;
                 int minutes = randomNum.nextInt(60);
-                System.out.println("      " + hour + ":" + minutes + "                   " + 2023 + "-" + month + "-" + day);
+                System.out.println("      " + hour + ":" + minutes + "                   " + year + "-" + month + "-" + day);
                 System.out.println();
-            //}
+            
 
         }
         System.out.println("- - - -  This report is for viewing, not for print - - - -  ");
@@ -56,10 +94,13 @@ public class DailyReport implements Report {
         Random randomNum = new Random();
         Scanner in = new Scanner (System.in);
         System.out.println("Enter day number: ");
-        int day = in.nextInt();
+        day = in.next();
+        
         
         System.out.println("Enter month number: ");
-        int month = in.nextInt();
+         month = in.next();
+         System.out.println("Enter year number: ");
+        year = in.next();
         
         for (int i = 0; i < EmployeesID.length; i++) {
             System.out.println("- - - - - - - - - - - - - - - - - - - - - - -  ");
@@ -71,14 +112,14 @@ public class DailyReport implements Report {
             System.out.println("Time Attendance :             Date: ");
             System.out.println("- - - - - - - - - - - - - - - - - - - - - - -  ");
             System.out.println();
-            //for (int j = 0; j < 6; j++) {
+            
 
                 int hour = randomNum.nextInt(10) + 1;
                 int minutes = randomNum.nextInt(60);
-                System.out.println("      " + hour + ":" + minutes + "                   " + 2023 + "-" + month + "-" + day);
+                System.out.println("      " + hour + ":" + minutes + "                   " + year + "-" + month + "-" + day);
                 System.out.println();
                 
-            //}
+            
             
         }
         System.out.println("- - - - - - - -  -  printed successfully - - - - - - - - - - ");

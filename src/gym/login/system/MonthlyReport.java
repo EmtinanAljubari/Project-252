@@ -8,12 +8,19 @@ package gym.login.system;
 import java.util.Random;
 import java.util.Scanner;
 
-/**
- *
- * @author Rahaf
- */
+
 public class MonthlyReport implements Report {
 
+    public static String month;
+
+    public static String getMonth() {
+        return month;
+    }
+
+    public static void setMonth(String month) {
+        MonthlyReport.month = month;
+    }
+    
     @Override
     public void Disply(int[] EmployeesID) {
         System.out.println();
@@ -24,6 +31,8 @@ public class MonthlyReport implements Report {
         
         System.out.println("Enter month number: ");
         int month = in.nextInt();
+        System.out.println("Enter year number: ");
+        int year = in.nextInt();
         
         for (int i = 0; i < EmployeesID.length; i++) {
             System.out.println("- - - - - - - - - - - - - - - - - - - - - - -  ");
@@ -40,7 +49,7 @@ public class MonthlyReport implements Report {
                 int hour = randomNum.nextInt(10) + 1;
                 int minutes = randomNum.nextInt(60);
                 int day = randomNum.nextInt(30) + 1;
-                System.out.println("      " + hour + ":" + minutes + "                   " + 2023 + "-" + month + "-" + day);
+                System.out.println("      " + hour + ":" + minutes + "                   " + year + "-" + month + "-" + day);
                 System.out.println();
             }
 
@@ -56,6 +65,8 @@ public class MonthlyReport implements Report {
         Scanner in = new Scanner (System.in);
         System.out.println("Enter month number: ");
         int month = in.nextInt();
+        System.out.println("Enter year number: ");
+        int year = in.nextInt();
         
         for (int i = 0; i < EmployeesID.length; i++) {
             System.out.println("- - - - - - - - - - - - - - - - - - - - - - -  ");
@@ -72,7 +83,7 @@ public class MonthlyReport implements Report {
                 int hour = randomNum.nextInt(10) + 1;
                 int minutes = randomNum.nextInt(60);
                 int day = randomNum.nextInt(30) + 1;
-                System.out.println("      " + hour + ":" + minutes + "                   " + 2023 + "-" + month + "-" + day);
+                System.out.println("      " + hour + ":" + minutes + "                   " + year + "-" + month + "-" + day);
                 System.out.println();
                 
             }

@@ -80,11 +80,9 @@ public class Gym_Login_System {
         subscribersID.add(9999);
 
         // Assign Employees id
-        for (int i = 0; i < EmployeesID.length; i++) {
-            EmployeesID[i] = i + 1000;
-        }
-        //**********************************************************
+        EmployeesID = getEmployeesID(EmployeesID);
 
+        //**********************************************************
         //Start point of system implemention 
         Scanner input = new Scanner(System.in);
         System.out.print("Pleas enter your User ID: ");
@@ -102,7 +100,7 @@ public class Gym_Login_System {
         subscribersID.add(23);
 
         boolean membershipState = true;
-        boolean ValidID = false; 
+        boolean ValidID = false;
         int subIndex = 0;
         //loop to check the state of membership
         for (int j = 0; j < subscribersID.size(); j++) {
@@ -114,31 +112,30 @@ public class Gym_Login_System {
                         if (subscribersID2.get(i).isState() == false) {
                             membershipState = false;
                             subIndex = i;
-                        }}
-                }}
+                        }
+                    }
+                }
+            }
         }
 
         if (membershipState == true && ValidID == true) {//Avaliable membership
             System.out.println("Your membership still avaliable!");
-        
-        
-        } else if(membershipState == false && ValidID == true){//Unavaliable membership
+
+        } else if (membershipState == false && ValidID == true) {//Unavaliable membership
             System.out.println(" Your Membership expired, Do you want to renew it? " + "\n" + "Enter Yes or No");
             String Choice = in.next();
-            
+
             if (Choice.equalsIgnoreCase("Yes")) {
                 subscribersID2.add(subscribersID2.get(subIndex).clone());//Clone Method
                 subscribersID2.get(subscribersID2.size() - 1).setState(true);//Update Membership
                 System.out.println("Your membership renewed successfully!");
-            
-            
+
             } else {
                 System.out.println("You are not authorized to access due to expired membership");
                 System.exit(0);
             }
-        
-        
-        }else if(membershipState == false && ValidID == false){
+
+        } else if (membershipState == false && ValidID == false) {
             System.out.println("Invalid Member ID!");
         }
         // End of Prototype
@@ -161,10 +158,7 @@ public class Gym_Login_System {
             choice = input.nextInt();
             System.out.println();
 
-            
             //--------call method depending on choice-------------
-            
-            
             if (choice == 1) { //patterns (templet)
 
                 //array for vaild Verification Codes
@@ -195,6 +189,7 @@ public class Gym_Login_System {
                 System.out.println();
 
             } else if (choice == 4) {// factory design pattern
+
                 ManagementReport(UserID);
                 System.out.println();
 
@@ -307,6 +302,14 @@ public class Gym_Login_System {
         } else {
             System.out.println("The given ID is not allowed to access management reports!");
         }
+    }
+
+    public static int[] getEmployeesID(int[] EmployeesID) {
+
+        for (int i = 0; i < EmployeesID.length; i++) {
+            EmployeesID[i] = (1000 + i);
+        }
+        return EmployeesID;
     }
 
 }
