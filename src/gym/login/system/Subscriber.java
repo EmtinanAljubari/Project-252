@@ -4,7 +4,7 @@ import static gym.login.system.Gym_Login_System.codeIndex;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public abstract class Subscriber extends User {
+public abstract class Subscriber extends User implements Gate {
 
     private String TypeOfMemberShip;
     private String startingDate;
